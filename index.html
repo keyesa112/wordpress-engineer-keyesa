@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Talidah Nur Keyesa - WordPress Developer | Full-Stack Web Solutions">
+    <title>Talidah Nur Keyesa - WordPress Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #1a1f36;
+            background: #0f1419;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(15, 20, 25, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav .logo {
+            font-weight: 800;
+            font-size: 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+            font-style: italic;
+            flex-shrink: 0;
+        }
+
+        nav .nav-items {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #b4bef3;
+            padding: 0.5rem 1rem;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 1rem;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        nav a:hover::after {
+            width: calc(100% - 2rem);
+        }
+
+        .nav-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 13px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            margin-left: 1rem;
+            flex-shrink: 0;
+        }
+
+        .nav-download::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .nav-download:hover::before {
+            left: 100%;
+        }
+
+        .nav-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1f36 0%, #0f1419 50%, #1a1f36 100%);
+            color: white;
+            padding: 140px 2rem 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(102, 126, 234, 0.08);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(118, 75, 162, 0.08);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 16px;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero .subtitle {
+            font-size: 21px;
+            margin-bottom: 45px;
+            opacity: 0.95;
+            font-weight: 400;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideInUp 0.8s ease-out 0.1s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 14px 48px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin: 0 12px;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 16px 48px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid white;
+            color: white;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 16px 48px rgba(255, 255, 255, 0.2);
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 120px 2rem;
+            background: linear-gradient(180deg, #0f1419 0%, #1a1f36 50%, #0f1419 100%);
+        }
+
+        .projects-section h2 {
+            text-align: center;
+            font-size: 44px;
+            margin-bottom: 70px;
+            color: white;
+            font-weight: 800;
+            letter-spacing: -1px;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.5s;
+            z-index: 1;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border: 1px solid rgba(102, 126, 234, 0.4);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.25);
+        }
+
+        .project-card .image {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+        }
+
+        .project-card .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .image img {
+            transform: scale(1.08) rotate(2deg);
+        }
+
+        .project-card .content {
+            padding: 32px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: white;
+            font-weight: 800;
+        }
+
+        .project-card .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 18px 0;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            color: #a8bfff;
+            padding: 7px 16px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .project-card p {
+            color: #c4cff7;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .project-card a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #a8bfff;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .project-card a:hover {
+            color: #667eea;
+            transform: translateX(6px);
+        }
+
+        .project-card a:hover::after {
+            width: 100%;
+        }
+
+        /* Projects CTA */
+        .projects-cta {
+            text-align: center;
+            margin-top: 70px;
+            animation: slideInUp 0.8s ease-out 0.3s both;
+        }
+
+        .see-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 56px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .see-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .see-more-btn:hover::before {
+            left: 100%;
+        }
+
+        .see-more-btn:hover {
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: 0 16px 48px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Skills Section */
+        .skills-section {
+            padding: 120px 2rem;
+            background: #0f1419;
+        }
+
+        .skills-section h2 {
+            text-align: center;
+            font-size: 44px;
+            margin-bottom: 70px;
+            color: white;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+
+        .skill-card {
+            background: rgba(102, 126, 234, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .skill-card:hover {
+            border: 1px solid rgba(102, 126, 234, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+            background: rgba(102, 126, 234, 0.08);
+        }
+
+        .skill-card h3 {
+            color: #a8bfff;
+            margin-bottom: 28px;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .skill-card li {
+            padding: 12px 0;
+            color: #c4cff7;
+            font-size: 15px;
+            border-bottom: 1px solid rgba(102, 126, 234, 0.15);
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .skill-card li:hover {
+            color: #a8bfff;
+            padding-left: 8px;
+        }
+
+        .skill-card li:last-child {
+            border: none;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 120px 2rem;
+            background: linear-gradient(180deg, #1a1f36 0%, #0f1419 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-section h2 {
+            font-size: 44px;
+            margin-bottom: 28px;
+            color: white;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .about-section p {
+            font-size: 16px;
+            color: #b4bef3;
+            margin-bottom: 20px;
+            line-height: 1.9;
+        }
+
+        .about-image-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .about-image {
+            width: 100%;
+            max-width: 340px;
+            aspect-ratio: 3 / 4;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+            object-fit: cover;
+            object-position: top;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .about-image:hover {
+            border: 2px solid rgba(102, 126, 234, 0.6);
+            box-shadow: 0 30px 80px rgba(102, 126, 234, 0.4);
+            transform: scale(1.02);
+        }
+
+        .stats {
+            display: flex;
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .stat {
+            flex: 1;
+        }
+
+        .stat-number {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #8899cc;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 120px 2rem;
+            background: linear-gradient(135deg, #1a1f36 0%, #0f1419 50%, #1a1f36 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(102, 126, 234, 0.08);
+            border-radius: 50%;
+            top: -250px;
+            right: -250px;
+        }
+
+        .contact-section h2 {
+            font-size: 44px;
+            margin-bottom: 18px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-section > .container > p {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            flex: 0 1 240px;
+        }
+
+        .contact-item p {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            opacity: 0.95;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 15px;
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-item a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+
+        .contact-item a:hover::after {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0e13;
+            color: #8899cc;
+            text-align: center;
+            padding: 35px 2rem;
+            font-size: 14px;
+            border-top: 1px solid rgba(102, 126, 234, 0.1);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav .container {
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 0.8rem 1.5rem;
+            }
+
+            nav .logo {
+                font-size: 20px;
+                order: 1;
+            }
+
+            nav .nav-items {
+                order: 2;
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 8px;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 13px;
+                margin: 0;
+            }
+
+            .nav-download {
+                padding: 7px 18px;
+                font-size: 12px;
+                margin-left: auto;
+                margin-top: 0;
+            }
+
+            .hero {
+                padding: 100px 1.5rem 80px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+                margin-bottom: 12px;
+            }
+
+            .hero .subtitle {
+                font-size: 18px;
+                margin-bottom: 35px;
+            }
+
+            .cta-button {
+                padding: 12px 40px;
+                margin: 8px 6px;
+                font-size: 14px;
+            }
+
+            .projects-section,
+            .skills-section,
+            .about-section,
+            .contact-section {
+                padding: 80px 1.5rem;
+            }
+
+            .projects-section h2,
+            .skills-section h2,
+            .about-section h2,
+            .contact-section h2 {
+                font-size: 36px;
+                margin-bottom: 50px;
+            }
+
+            .projects-grid {
+                gap: 25px;
+            }
+
+            .project-card .image {
+                height: 200px;
+            }
+
+            .project-card .content {
+                padding: 24px;
+            }
+
+            .projects-cta {
+                margin-top: 50px;
+            }
+
+            .see-more-btn {
+                padding: 14px 48px;
+                font-size: 15px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .about-image {
+                max-width: 300px;
+            }
+
+            .stats {
+                gap: 35px;
+                flex-wrap: wrap;
+            }
+
+            .stat {
+                flex: 0 1 calc(50% - 17.5px);
+            }
+
+            .stat-number {
+                font-size: 36px;
+            }
+
+            .contact-info {
+                gap: 35px;
+                flex-direction: column;
+            }
+
+            .contact-item {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav .container {
+                flex-direction: column;
+                gap: 8px;
+                padding: 0.6rem 1rem;
+            }
+
+            nav .logo {
+                order: 1;
+                font-size: 18px;
+            }
+
+            nav .nav-items {
+                order: 2;
+                width: 100%;
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+
+            nav a {
+                padding: 0.3rem 0.6rem;
+                font-size: 12px;
+                flex: 0 1 auto;
+            }
+
+            .nav-download {
+                padding: 6px 14px;
+                font-size: 11px;
+                margin-left: 0;
+                width: 100%;
+                justify-content: center;
+                margin-top: 6px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+                margin-bottom: 10px;
+            }
+
+            .hero .subtitle {
+                font-size: 16px;
+                margin-bottom: 25px;
+            }
+
+            .projects-section h2,
+            .skills-section h2,
+            .about-section h2,
+            .contact-section h2 {
+                font-size: 28px;
+                margin-bottom: 35px;
+            }
+
+            .project-card .content,
+            .skill-card {
+                padding: 24px;
+            }
+
+            .projects-cta {
+                margin-top: 40px;
+            }
+
+            .see-more-btn {
+                padding: 12px 40px;
+                font-size: 14px;
+                width: 90%;
+            }
+
+            .stats {
+                gap: 15px;
+                justify-content: center;
+            }
+
+            .stat {
+                flex: 0 1 auto;
+            }
+
+            .stat-number {
+                font-size: 32px;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 10px auto;
+                width: 90%;
+            }
+
+            .about-image {
+                max-width: 260px;
+            }
+
+            .contact-info {
+                gap: 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">KEYESA.DEV</div>
+            <div class="nav-items">
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <a href="cv/Talidah-Nur-Keyesa-CV.pdf" download class="nav-download">Download CV</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>WordPress Developer & Full-Stack Web Solutions</h1>
+            <p class="subtitle">Turning complex projects into scalable, performant websites</p>
+            <a href="#projects" class="cta-button">View My Work</a>
+            <a href="#contact" class="cta-button secondary">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="image">
+                        <img src="img/lenzo-body-coating.png" alt="Lenzo Body Coating">
+                    </div>
+                    <div class="content">
+                        <h3>Lenzo Body Coating</h3>
+                        <div class="tags">
+                            <span class="tag">PHP</span>
+                            <span class="tag">Plugin Dev</span>
+                            <span class="tag">SEO</span>
+                        </div>
+                        <p>Auto-posting system with 329+ generated posts in under 60 seconds. Full-stack development: Figma design, PHP plugin, database engineering, and SEO optimization.</p>
+                        <a href="https://cejedewe.com/" target="_blank">View Live →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="image">
+                        <img src="img/lintas-sukses-mandiri.png" alt="DCPipes Manufacturing">
+                    </div>
+                    <div class="content">
+                        <h3>DCPipes Manufacturing</h3>
+                        <div class="tags">
+                            <span class="tag">Performance</span>
+                            <span class="tag">Responsive</span>
+                            <span class="tag">Optimization</span>
+                        </div>
+                        <p>Company profile website with significant performance improvements. PageSpeed Insights: 45→82 (82% improvement). Steel manufacturing B2B showcase.</p>
+                        <a href="http://dcpipes.co.id/" target="_blank">View Live →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="image">
+                        <img src="img/maklon-kosmetik-indonesia.png" alt="Maklon Kosmetik">
+                    </div>
+                    <div class="content">
+                        <h3>Maklon Kosmetik</h3>
+                        <div class="tags">
+                            <span class="tag">Elementor</span>
+                            <span class="tag">Custom CSS</span>
+                            <span class="tag">Collaboration</span>
+                        </div>
+                        <p>Custom header and footer development with HTML/CSS. Professional cosmetic maklon company profile. Collaborated with design team for seamless implementation.</p>
+                        <a href="https://maklonkosmetik.co.id/" target="_blank">View Live →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="image">
+                        <img src="img/intan-seafood.png" alt="Intan Seafood">
+                    </div>
+                    <div class="content">
+                        <h3>Intan Seafood</h3>
+                        <div class="tags">
+                            <span class="tag">Bilingual</span>
+                            <span class="tag">Polylang</span>
+                            <span class="tag">International</span>
+                        </div>
+                        <p>Bilingual website (ID/EN) using Polylang plugin. Seafood export company reaching international markets. Implemented seamless language switching.</p>
+                        <a href="https://intanseafood.com/" target="_blank">View Live →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="image">
+                        <img src="img/english-with-stu.png" alt="English with Stu">
+                    </div>
+                    <div class="content">
+                        <h3>English with Stu</h3>
+                        <div class="tags">
+                            <span class="tag">Education</span>
+                            <span class="tag">Brand Design</span>
+                        </div>
+                        <p>English language course company profile. Professional showcase for course offerings and student enrollment. Brand-aligned design and user experience.</p>
+                        <a href="https://glori.co.id/" target="_blank">View Live →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="image">
+                        <img src="img/beta-amulia.png" alt="Amulia Parfum">
+                    </div>
+                    <div class="content">
+                        <h3>Amulia Parfum</h3>
+                        <div class="tags">
+                            <span class="tag">Dynamic Meta</span>
+                            <span class="tag">SEO</span>
+                            <span class="tag">Backend</span>
+                        </div>
+                        <p>Dynamic title and meta description system for every page. Automated metadata generation for perfume maklon company. Improved SEO consistency and search visibility.</p>
+                        <a href="https://beta.amulia.com/" target="_blank">View Live →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- See More Button -->
+            <div class="projects-cta">
+                <a href="https://github.com/keyesa112" target="_blank" class="see-more-btn">
+                    🚀 See More on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Frontend Development</h3>
+                    <ul>
+                        <li>WordPress</li>
+                        <li>Elementor</li>
+                        <li>HTML/CSS</li>
+                        <li>JavaScript</li>
+                        <li>Responsive Design</li>
+                        <li>Figma to Dev</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Backend & Database</h3>
+                    <ul>
+                        <li>PHP (OOP)</li>
+                        <li>MySQL</li>
+                        <li>WordPress Plugins</li>
+                        <li>REST APIs</li>
+                        <li>Data Engineering</li>
+                        <li>Query Optimization</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Performance & SEO</h3>
+                    <ul>
+                        <li>Yoast SEO</li>
+                        <li>PageSpeed Optimization</li>
+                        <li>SEMrush/Ahrefs</li>
+                        <li>Caching Strategies</li>
+                        <li>Image Optimization</li>
+                        <li>Technical SEO</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>I'm Talidah Nur Keyesa, a WordPress developer and Informatics Engineering student at Universitas Airlangga. I specialize in building full-stack web solutions that combine beautiful design with powerful functionality.</p>
+                    <p>Currently interning at FruityLogic Design, I've developed 9+ production websites serving clients across manufacturing, education, cosmetics, and e-commerce sectors.</p>
+                    <p>Beyond coding, I'm passionate about SEO strategy, performance optimization, and turning complex business requirements into elegant technical solutions.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-number">9+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">329</div>
+                            <div class="stat-label">Auto-Posts Generated</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">3.70</div>
+                            <div class="stat-label">GPA / 4.0</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image-wrapper">
+                    <img src="img/profile.png" alt="Talidah Nur Keyesa" class="about-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>Let's Work Together</h2>
+            <p>Interested in collaboration or have a project in mind?</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <p>📧 Email</p>
+                    <a href="mailto:talidahnurkeyesa@outlook.com">talidahnurkeyesa@outlook.com</a>
+                </div>
+                <div class="contact-item">
+                    <p>📱 Phone</p>
+                    <a href="tel:+6281235627057">+62 812 3562 7057</a>
+                </div>
+                <div class="contact-item">
+                    <p>💼 LinkedIn</p>
+                    <a href="https://linkedin.com/in/talidah-nur-keyesa" target="_blank">talidah-nur-keyesa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Talidah Nur Keyesa. All rights reserved.</p>
+    </footer>
+</body>
+</html>
