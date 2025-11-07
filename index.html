@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Talidah Nur Keyesa - WordPress Developer">
-    <title>Talidah Nur Keyesa - WordPress Developer</title>
+    <meta name="description" content="Talidah Nur Keyesa - Web Developer">
+    <title>Talidah Nur Keyesa - Web Developer</title>
     <style>
         :root {
             --accent-primary: #667eea;
@@ -262,6 +262,17 @@
             50% { background-position: 100% center; }
         }
 
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .hero .container {
             position: relative;
             z-index: 1;
@@ -280,17 +291,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: slideInUp 0.8s ease-out, gradientShift 6s ease infinite;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .hero .subtitle {
@@ -377,6 +377,65 @@
             animation: gradientShift 6s ease infinite;
         }
 
+        /* FILTER BUTTONS */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .filter-btn {
+            padding: 12px 32px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            background-color: transparent;
+            color: #b4bef3;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            z-index: -1;
+            transition: left 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent-primary);
+            color: white;
+        }
+
+        .filter-btn:hover::before {
+            left: 0;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            color: white;
+            border-color: var(--accent-primary);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .filter-btn.active::before {
+            left: 0;
+        }
+
+        /* PROJECT CARDS */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -393,6 +452,11 @@
             position: relative;
             opacity: 0;
             animation: fadeInUp 0.6s ease-out forwards;
+            display: none;
+        }
+
+        .project-card.show {
+            display: block;
         }
 
         @keyframes fadeInUp {
@@ -441,6 +505,10 @@
             overflow: hidden;
             background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
         }
 
         .project-card .image::after {
@@ -965,6 +1033,15 @@
                 margin-bottom: 50px;
             }
 
+            .filter-container {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 12px;
+            }
+
             .projects-grid {
                 gap: 25px;
             }
@@ -1082,6 +1159,11 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 11px;
+            }
         }
     </style>
 </head>
@@ -1115,8 +1197,8 @@
     <!-- Hero -->
     <section class="hero">
         <div class="container">
-            <h1>WordPress Developer</h1>
-            <p class="subtitle">Turning complex projects into scalable, performant websites</p>
+            <h1>Web Developer</h1>
+            <p class="subtitle">Membantu mempermudah bisnis proses Anda dengan digitalisasi website</p>
             <a href="#projects" class="cta-button">View My Work</a>
             <a href="#contact" class="cta-button secondary">Get In Touch</a>
         </div>
@@ -1126,16 +1208,25 @@
     <section class="projects-section" id="projects">
         <div class="container">
             <h2>Featured Projects</h2>
+            
+            <!-- FILTER BUTTONS -->
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+                <button class="filter-btn" onclick="filterProjects('web-developer')">Web Developer</button>
+                <button class="filter-btn" onclick="filterProjects('machine-learning')">Machine Learning</button>
+            </div>
+
             <div class="projects-grid">
-                <div class="project-card">
+                <!-- WEB DEVELOPER - WORDPRESS PROJECT 1 -->
+                <div class="project-card show" data-category="web-developer">
                     <div class="image">
-                        <img src="img/lenzo-body-coating.png" alt="Lenzo Body Coating">
+                        🌐
                     </div>
                     <div class="content">
                         <h3>Lenzo Body Coating</h3>
                         <div class="tags">
-                            <span class="tag">PHP</span>
-                            <span class="tag">Plugin Dev</span>
+                            <span class="tag">WordPress</span>
+                            <span class="tag">PHP Plugin</span>
                             <span class="tag">SEO</span>
                         </div>
                         <p>Auto-posting system with 329+ generated posts in under 60 seconds. Full-stack development: Figma design, PHP plugin, database engineering, and SEO optimization.</p>
@@ -1143,82 +1234,88 @@
                     </div>
                 </div>
 
-                <div class="project-card">
+                <!-- WEB DEVELOPER - WORDPRESS PROJECT 2 -->
+                <div class="project-card show" data-category="web-developer">
                     <div class="image">
-                        <img src="img/lintas-sukses-mandiri.png" alt="DCPipes Manufacturing">
+                        🏭
                     </div>
                     <div class="content">
                         <h3>DCPipes Manufacturing</h3>
                         <div class="tags">
+                            <span class="tag">WordPress</span>
                             <span class="tag">Performance</span>
-                            <span class="tag">Responsive</span>
-                            <span class="tag">Optimization</span>
+                            <span class="tag">B2B</span>
                         </div>
                         <p>Company profile website with significant performance improvements. PageSpeed Insights: 45→82 (82% improvement). Steel manufacturing B2B showcase.</p>
                         <a href="http://dcpipes.co.id/" target="_blank">View Live →</a>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <!-- WEB DEVELOPER - WORDPRESS PROJECT 3 -->
+                <div class="project-card show" data-category="web-developer">
                     <div class="image">
-                        <img src="img/maklon-kosmetik-indonesia.png" alt="Maklon Kosmetik">
+                        💄
                     </div>
                     <div class="content">
                         <h3>Maklon Kosmetik</h3>
                         <div class="tags">
+                            <span class="tag">WordPress</span>
                             <span class="tag">Elementor</span>
                             <span class="tag">Custom CSS</span>
-                            <span class="tag">Collaboration</span>
                         </div>
                         <p>Custom header and footer development with HTML/CSS. Professional cosmetic maklon company profile. Collaborated with design team for seamless implementation.</p>
                         <a href="https://maklonkosmetik.co.id/" target="_blank">View Live →</a>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <!-- MACHINE LEARNING PROJECT 1 -->
+                <div class="project-card" data-category="machine-learning">
                     <div class="image">
-                        <img src="img/intan-seafood.png" alt="Intan Seafood">
+                        🤖
                     </div>
                     <div class="content">
-                        <h3>Intan Seafood</h3>
+                        <h3>BERT Text Classification</h3>
                         <div class="tags">
-                            <span class="tag">Bilingual</span>
-                            <span class="tag">Polylang</span>
-                            <span class="tag">International</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag">Python</span>
                         </div>
-                        <p>Bilingual website (ID/EN) using Polylang plugin. Seafood export company reaching international markets. Implemented seamless language switching.</p>
-                        <a href="https://intanseafood.com/" target="_blank">View Live →</a>
+                        <p>Text classification using BERT embeddings dengan dataset hasoc dan offensive. Preprocessing pipeline, tokenization, dan model evaluation menggunakan Google Colab.</p>
+                        <a href="#" target="_blank">View Project →</a>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <!-- MACHINE LEARNING PROJECT 2 -->
+                <div class="project-card" data-category="machine-learning">
                     <div class="image">
-                        <img src="img/english-with-stu.png" alt="English with Stu">
+                        📊
                     </div>
                     <div class="content">
-                        <h3>English with Stu</h3>
+                        <h3>Data Analysis & Visualization</h3>
                         <div class="tags">
-                            <span class="tag">Education</span>
-                            <span class="tag">Brand Design</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Data Science</span>
+                            <span class="tag">Python</span>
                         </div>
-                        <p>English language course company profile. Professional showcase for course offerings and student enrollment. Brand-aligned design and user experience.</p>
-                        <a href="https://glori.co.id/" target="_blank">View Live →</a>
+                        <p>Advanced data analysis projects dengan fokus pada insights extraction dan visual representation. Implementation menggunakan Python dan data science libraries.</p>
+                        <a href="#" target="_blank">View Project →</a>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <!-- MACHINE LEARNING PROJECT 3 -->
+                <div class="project-card" data-category="machine-learning">
                     <div class="image">
-                        <img src="img/beta-amulia.png" alt="Amulia Parfum">
+                        🧠
                     </div>
                     <div class="content">
-                        <h3>Amulia Parfum</h3>
+                        <h3>NLP Research Project</h3>
                         <div class="tags">
-                            <span class="tag">Dynamic Meta</span>
-                            <span class="tag">SEO</span>
-                            <span class="tag">Backend</span>
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag">Research</span>
                         </div>
-                        <p>Dynamic title and meta description system for every page. Automated metadata generation for perfume maklon company. Improved SEO consistency and search visibility.</p>
-                        <a href="https://beta.amulia.com/" target="_blank">View Live →</a>
+                        <p>Natural Language Processing research menggunakan state-of-the-art techniques. Focus pada model development, evaluation metrics, dan deployment strategy.</p>
+                        <a href="#" target="_blank">View Project →</a>
                     </div>
                 </div>
             </div>
@@ -1282,7 +1379,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>About Me</h2>
-                    <p>I'm Talidah Nur Keyesa, a WordPress developer and Informatics Engineering student at Universitas Airlangga. I specialize in building full-stack web solutions that combine beautiful design with powerful functionality.</p>
+                    <p>I'm Talidah Nur Keyesa, a Web Developer and Informatics Engineering student at Universitas Airlangga. I specialize in building full-stack web solutions that combine beautiful design with powerful functionality.</p>
                     <p>Currently interning at FruityLogic Design, I've developed 9+ production websites serving clients across manufacturing, education, cosmetics, and e-commerce sectors.</p>
                     <p>Beyond coding, I'm passionate about SEO strategy, performance optimization, and turning complex business requirements into elegant technical solutions.</p>
                     <div class="stats">
@@ -1319,7 +1416,7 @@
                 </div>
                 <div class="contact-item">
                     <p>📱 Phone</p>
-                    <a href="wa.me/6281235627057">+62 812 3562 7057</a>
+                    <a href="https://wa.me/6281235627057">+62 812 3562 7057</a>
                 </div>
                 <div class="contact-item">
                     <p>💼 LinkedIn</p>
@@ -1392,6 +1489,22 @@
                 hamburger.classList.remove('active');
             }
         });
+
+        // ========== FILTER PROJECTS ==========
+        function filterProjects(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.add('show');
+                } else {
+                    card.classList.remove('show');
+                }
+            });
+        }
 
         // ========== PARALLAX SCROLLING ==========
         const hero = document.querySelector('.hero');
