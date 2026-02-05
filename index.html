@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -19,21 +20,63 @@
         }
     </script>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-gray-50/80 backdrop-blur-lg z-50 py-6">
+    <nav class="fixed top-0 w-full bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-lg z-50 py-6 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-8">
-            <div class="flex justify-center items-center">
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex justify-center items-center gap-4">
                 <div class="flex items-center gap-8">
-                    <div class="flex gap-0 bg-gray-100 rounded-full p-1.5 border border-gray-200">
-                        <a href="#home" class="text-gray-500 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 hover:bg-white active">Home</a>
-                        <a href="#about" class="text-gray-500 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 hover:bg-white">About</a>
-                        <a href="#experience" class="text-gray-500 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 hover:bg-white">Experience</a>
-                        <a href="#projects" class="text-gray-500 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 hover:bg-white">Projects</a>
-                        <a href="#contact" class="text-gray-500 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 hover:bg-white">Contact</a>
+                    <div class="flex gap-0 bg-gray-100 dark:bg-gray-800 rounded-full p-1.5 border border-gray-200 dark:border-gray-700">
+                        <a href="#home" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Home</a>
+                        <a href="#about" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">About</a>
+                        <a href="#experience" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Experience</a>
+                        <a href="#projects" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Projects</a>
+                        <a href="#testimonials" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Testimonials</a>
+                        <a href="#contact" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Contact</a>
                     </div>
                 </div>
+                
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
+                    <i class="bi bi-sun-fill text-gray-900 dark:hidden text-lg"></i>
+                    <i class="bi bi-moon-fill text-gray-100 hidden dark:block text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div class="md:hidden flex justify-center gap-3">
+                <div class="relative">
+                    <button id="mobile-menu-button" class="flex items-center gap-2 px-6 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                        <span>Menu</span>
+                        <i class="bi bi-chevron-down text-xs"></i>
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <div id="mobile-menu" class="hidden absolute top-full mt-3 left-1/2 -translate-x-1/2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl overflow-hidden">
+                        <div class="flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                            <span class="text-base font-semibold text-gray-900 dark:text-gray-100">Navigation</span>
+                            <button id="close-menu" class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">
+                                <i class="bi bi-x text-xl text-gray-600 dark:text-gray-400"></i>
+                            </button>
+                        </div>
+                        <div class="py-2">
+                            <a href="#home" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">Home</a>
+                            <a href="#about" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">About</a>
+                            <a href="#experience" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Experience</a>
+                            <a href="#projects" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Projects</a>
+                            <a href="#testimonials" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Testimonials</a>
+                            <a href="#contact" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Dark Mode Toggle -->
+                <button id="theme-toggle-mobile" class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">
+                    <i class="bi bi-sun-fill text-gray-900 dark:hidden text-lg"></i>
+                    <i class="bi bi-moon-fill text-gray-100 hidden dark:block text-lg"></i>
+                </button>
             </div>
         </div>
     </nav>
@@ -42,15 +85,15 @@
     <section class="pt-36 pb-24 px-8 text-center" id="home">
         <div class="max-w-6xl mx-auto">
             <div class="mb-8">
-                <img src="img/profile.png" alt="Talidah Nur Keyesa" class="w-36 h-36 rounded-full border-4 border-white shadow-lg mx-auto">
+                <img src="img/profile.png" alt="Talidah Nur Keyesa" class="w-36 h-36 rounded-full border-4 border-white dark:border-gray-800 shadow-lg mx-auto">
             </div>
             
-            <div class="inline-flex items-center gap-2 bg-green-50 text-green-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                <span class="w-2 h-2 bg-green-600 rounded-full animate-pulse"></span>
+            <div class="inline-flex items-center gap-2 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                <span class="w-2 h-2 bg-green-600 dark:bg-green-400 rounded-full animate-pulse"></span>
                 Available for work!
             </div>
             
-            <p class="text-gray-500 text-sm mb-8 flex items-center justify-center gap-2">
+            <p class="text-gray-500 dark:text-gray-400 text-sm mb-8 flex items-center justify-center gap-2">
                 <i class="bi bi-geo-alt-fill"></i>
                 Currently based in Surabaya — open to relocate
             </p>
@@ -59,31 +102,31 @@
                 Hi I'm <span class="text-red-500">Talidah Nur Keyesa</span> - AI & Data Optimization Intern with Web Engineering Expertise.
             </h1>
             
-            <p class="text-lg text-gray-500 leading-relaxed max-w-3xl mx-auto mb-10">
+            <p class="text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto mb-10">
                 I build fast, accessible, and SEO-friendly web applications using Laravel, WordPress, and modern frameworks. With experience in AI data labeling and machine learning support, I am passionate about creating smooth user interfaces and delivering scalable solutions.
             </p>
             
             <div class="flex gap-3 justify-center items-center flex-wrap mb-6">
-                <a href="#contact" class="px-7 py-3 bg-gray-900 text-white rounded-lg text-sm font-semibold transition-all hover:bg-black hover:-translate-y-0.5 inline-flex items-center gap-2">
+                <a href="#contact" class="px-7 py-3 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-lg text-sm font-semibold transition-all hover:bg-black dark:hover:bg-white hover:-translate-y-0.5 inline-flex items-center gap-2">
                     <i class="bi bi-envelope"></i> Get in touch
                 </a>
-                <a href="#projects" class="px-7 py-3 bg-white text-gray-900 border border-gray-200 rounded-lg text-sm font-semibold transition-all hover:border-gray-900 inline-flex items-center gap-2">
+                <a href="#projects" class="px-7 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-semibold transition-all hover:border-gray-900 dark:hover:border-gray-600 inline-flex items-center gap-2">
                     <i class="bi bi-grid"></i> View projects
                 </a>
-                <a href="/cv/Talidah nur keyesa-resume.pdf" class="px-7 py-3 bg-white text-gray-900 border border-gray-200 rounded-lg text-sm font-semibold transition-all hover:border-gray-900 inline-flex items-center gap-2">
+                <a href="/cv/Talidah nur keyesa-resume.pdf" class="px-7 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-semibold transition-all hover:border-gray-900 dark:hover:border-gray-600 inline-flex items-center gap-2">
                     <i class="bi bi-download"></i> Download CV
                 </a>
             </div>
             
             <!-- Social Links: LinkedIn, GitHub, Email Only -->
             <div class="flex gap-3 justify-center mt-6">
-                <a href="https://linkedin.com/in/talidah-nur-keyesa" target="_blank" class="w-11 h-11 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-900 transition-all hover:bg-gray-900 hover:text-white hover:border-gray-900" title="LinkedIn">
+                <a href="https://linkedin.com/in/talidah-nur-keyesa" target="_blank" class="w-11 h-11 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-900 dark:text-gray-100 transition-all hover:bg-gray-900 dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 hover:border-gray-900 dark:hover:border-gray-100" title="LinkedIn">
                     <i class="bi bi-linkedin text-lg"></i>
                 </a>
-                <a href="https://github.com/keyesa112" target="_blank" class="w-11 h-11 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-900 transition-all hover:bg-gray-900 hover:text-white hover:border-gray-900" title="GitHub">
+                <a href="https://github.com/keyesa112" target="_blank" class="w-11 h-11 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-900 dark:text-gray-100 transition-all hover:bg-gray-900 dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 hover:border-gray-900 dark:hover:border-gray-100" title="GitHub">
                     <i class="bi bi-github text-lg"></i>
                 </a>
-                <a href="mailto:talidahnurkeyesa@outlook.com" class="w-11 h-11 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-900 transition-all hover:bg-gray-900 hover:text-white hover:border-gray-900" title="Email">
+                <a href="mailto:talidahnurkeyesa@outlook.com" class="w-11 h-11 rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 flex items-center justify-center text-gray-900 dark:text-gray-100 transition-all hover:bg-gray-900 dark:hover:bg-gray-100 hover:text-white dark:hover:text-gray-900 hover:border-gray-900 dark:hover:border-gray-100" title="Email">
                     <i class="bi bi-envelope-fill text-lg"></i>
                 </a>
             </div>
@@ -98,72 +141,44 @@
             </div>
 
             <div class="max-w-4xl mx-auto text-center mb-20">
-                <p class="text-base leading-relaxed mb-6">
+                <p class="text-base leading-relaxed mb-6 dark:text-gray-300">
                     My name is Talidah Nur Keyesa, and I am an AI & Data Optimization Intern with experience in data labeling, machine learning support, and web engineering. I specialize in preparing large-scale datasets for AI model development while also building reliable web systems using Laravel and WordPress.
                 </p>
 
-                <p class="text-base leading-relaxed mb-6">
+                <p class="text-base leading-relaxed mb-6 dark:text-gray-300">
                     Alongside my AI work, I possess strong full-stack skills in PHP, JavaScript, and modern frameworks, allowing me to manage projects from start-to-finish, from designing smooth UIs through connecting scalable backends.
                 </p>
 
-                <p class="text-base leading-relaxed mb-6">
+                <p class="text-base leading-relaxed mb-6 dark:text-gray-300">
                     I have built software for digital agencies, startups, and various industries, delivering maximum performance and engagement through precise engineering. Writing elegant, maintainable code and discovering new tools thrills me.
                 </p>
 
-                <p class="text-base leading-relaxed">
+                <p class="text-base leading-relaxed dark:text-gray-300">
                     Outside of work, I enjoy exploring new technologies and building side projects. I'm always up for learning, experimenting, and growing, looking for opportunities wherein I can bring value toward impactful products and inventive teams.
                 </p>
             </div>
 
             <!-- Tech Stack Icons -->
-            <div class="flex gap-8 justify-center items-center flex-wrap mt-16 text-gray-600">
-                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900">
-                    <i class="bi bi-lightning-charge-fill text-5xl"></i>
-                    <span class="text-xs font-medium">Fast</span>
+            <div class="flex gap-8 justify-center items-center flex-wrap mt-16 text-gray-600 dark:text-gray-400">
+                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900 dark:hover:text-gray-100">
+                    <i class="bi bi-filetype-php text-5xl"></i>
+                    <span class="text-xs font-medium">PHP</span>
                 </div>
-                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900">
-                    <i class="bi bi-code-slash text-5xl"></i>
+                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900 dark:hover:text-gray-100">
+                    <i class="bi bi-code-square text-5xl"></i>
+                    <span class="text-xs font-medium">Golang</span>
+                </div>
+                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900 dark:hover:text-gray-100">
+                    <i class="bi bi-filetype-py text-5xl"></i>
                     <span class="text-xs font-medium">Python</span>
                 </div>
-                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900">
-                    <i class="bi bi-palette-fill text-5xl"></i>
-                    <span class="text-xs font-medium">Design</span>
+                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900 dark:hover:text-gray-100">
+                    <i class="bi bi-database text-5xl"></i>
+                    <span class="text-xs font-medium">MySQL</span>
                 </div>
-                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900">
-                    <i class="bi bi-laptop text-5xl"></i>
-                    <span class="text-xs font-medium">Development</span>
-                </div>
-                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900">
-                    <i class="bi bi-gear-fill text-5xl"></i>
-                    <span class="text-xs font-medium">Tools</span>
-                </div>
-                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900">
-                    <i class="bi bi-box-seam text-5xl"></i>
-                    <span class="text-xs font-medium">Package</span>
-                </div>
-                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900">
-                    <i class="bi bi-database-fill text-5xl"></i>
-                    <span class="text-xs font-medium">Database</span>
-                </div>
-                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900">
-                    <i class="bi bi-ubuntu text-5xl"></i>
-                    <span class="text-xs font-medium">Docker</span>
-                </div>
-                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900">
-                    <i class="bi bi-rocket-takeoff-fill text-5xl"></i>
-                    <span class="text-xs font-medium">Deploy</span>
-                </div>
-                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900">
-                    <i class="bi bi-sliders text-5xl"></i>
-                    <span class="text-xs font-medium">Config</span>
-                </div>
-                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900">
-                    <i class="bi bi-hdd-stack-fill text-5xl"></i>
-                    <span class="text-xs font-medium">Storage</span>
-                </div>
-                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900">
-                    <i class="bi bi-phone text-5xl"></i>
-                    <span class="text-xs font-medium">Mobile</span>
+                <div class="flex flex-col items-center gap-2 transition-all hover:-translate-y-2 hover:text-gray-900 dark:hover:text-gray-100">
+                    <i class="bi bi-database-fill-gear text-5xl"></i>
+                    <span class="text-xs font-medium">MongoDB</span>
                 </div>
             </div>
         </div>
@@ -174,89 +189,89 @@
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-3 tracking-tight">My Experience</h2>
-                <p class="text-base text-gray-500 max-w-2xl mx-auto">Professional experience that I have accumulated over several years.</p>
+                <p class="text-base text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">Professional experience that I have accumulated over several years.</p>
             </div>
 
             <div class="max-w-4xl mx-auto relative">
                 <!-- Timeline Line -->
-                <div class="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+                <div class="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
 
                 <!-- Experience Item 1 -->
                 <div class="relative pl-20 mb-16">
-                    <div class="absolute left-0 top-0 w-11 h-11 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center z-10">
+                    <div class="absolute left-0 top-0 w-11 h-11 bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-full flex items-center justify-center z-10">
                         <i class="bi bi-circle-fill text-red-500 text-xs"></i>
                     </div>
-                    <div class="bg-white border border-gray-200 rounded-xl p-8">
-                        <div class="text-base font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-8">
+                        <div class="text-base font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-2">
                             <i class="bi bi-building"></i> Eklipse.gg, Jakarta
                         </div>
                         <h3 class="text-xl font-bold mb-2">AI & Data Optimization Intern</h3>
-                        <div class="inline-flex items-center gap-1.5 text-gray-500 text-xs mb-4">
+                        <div class="inline-flex items-center gap-1.5 text-gray-500 dark:text-gray-400 text-xs mb-4">
                             <i class="bi bi-calendar3"></i> 2025 - Present
                         </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">
                             Supported AI model development (generation 7, 8, and 9) through large-scale English audio data labeling. Labeled voice command keywords such as "clip it", "clip this", and "clip that", along with emotion categories including shouting, screaming, and laughing to enhance model accuracy. Conducted audio and image data gathering for UI updates using real-world datasets from games.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Data Labeling</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Audio Processing</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">ML Support</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Voice Recognition</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Emotion Classification</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Data Labeling</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Audio Processing</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">ML Support</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Voice Recognition</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Emotion Classification</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Experience Item 2 -->
                 <div class="relative pl-20 mb-16">
-                    <div class="absolute left-0 top-0 w-11 h-11 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center z-10">
+                    <div class="absolute left-0 top-0 w-11 h-11 bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-full flex items-center justify-center z-10">
                         <i class="bi bi-circle-fill text-red-500 text-xs"></i>
                     </div>
-                    <div class="bg-white border border-gray-200 rounded-xl p-8">
-                        <div class="text-base font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-8">
+                        <div class="text-base font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-2">
                             <i class="bi bi-building"></i> Kawan Kita Solusindo, Malang
                         </div>
                         <h3 class="text-xl font-bold mb-2">Web Developer Intern</h3>
-                        <div class="inline-flex items-center gap-1.5 text-gray-500 text-xs mb-4">
+                        <div class="inline-flex items-center gap-1.5 text-gray-500 dark:text-gray-400 text-xs mb-4">
                             <i class="bi bi-calendar3"></i> 2024 - 2025
                         </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">
                             Developed web-based systems for financial reporting and attendance management using Laravel. Implemented NFC integration to support real-time attendance tracking for Spiritful Gym Studio Malang. Focused on system reliability, data management, and scalable backend architecture.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Laravel</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">PHP</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">NFC</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Real-time</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">MySQL</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">RESTful API</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Laravel</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">PHP</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">NFC</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Real-time</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">MySQL</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">RESTful API</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Experience Item 3 -->
                 <div class="relative pl-20">
-                    <div class="absolute left-0 top-0 w-11 h-11 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center z-10">
+                    <div class="absolute left-0 top-0 w-11 h-11 bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-full flex items-center justify-center z-10">
                         <i class="bi bi-circle-fill text-red-500 text-xs"></i>
                     </div>
-                    <div class="bg-white border border-gray-200 rounded-xl p-8">
-                        <div class="text-base font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-8">
+                        <div class="text-base font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-2">
                             <i class="bi bi-building"></i> Fruity Logic Digital Agency, Surabaya
                         </div>
                         <h3 class="text-xl font-bold mb-2">Web Developer (CMS)</h3>
-                        <div class="inline-flex items-center gap-1.5 text-gray-500 text-xs mb-4">
+                        <div class="inline-flex items-center gap-1.5 text-gray-500 dark:text-gray-400 text-xs mb-4">
                             <i class="bi bi-calendar3"></i> 2023 - 2024
                         </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-4">
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-4">
                             Built and maintained WordPress-based websites for various industries, including distributors of partitions, perfumes, steel, and fresh fish. Performed SEO optimization using LiteSpeed to improve website performance and search visibility. Developed an AI-based detection system to identify online gambling attacks.
                         </p>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">WordPress</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">PHP</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">SEO</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Elementor</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">LiteSpeed</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Yoast SEO</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">WordPress</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">PHP</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">SEO</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Elementor</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">LiteSpeed</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Yoast SEO</span>
                         </div>
                     </div>
                 </div>
@@ -269,244 +284,239 @@
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-3 tracking-tight">Projects</h2>
-                <p class="text-base text-gray-500 max-w-2xl mx-auto">Some of the projects I have worked on.</p>
+                <p class="text-base text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">Some of the projects I have worked on.</p>
             </div>
 
             <div class="flex gap-2 mb-10 flex-wrap justify-center">
-                <button class="filter-btn px-5 py-2 bg-gray-900 text-white border border-gray-900 rounded-full text-xs font-medium cursor-pointer transition-all" onclick="filterProjects('all')">All Projects</button>
-                <button class="filter-btn px-5 py-2 bg-white text-gray-500 border border-gray-200 rounded-full text-xs font-medium cursor-pointer transition-all hover:border-gray-900 hover:text-gray-900" onclick="filterProjects('ai-data')">AI & Data</button>
-                <button class="filter-btn px-5 py-2 bg-white text-gray-500 border border-gray-200 rounded-full text-xs font-medium cursor-pointer transition-all hover:border-gray-900 hover:text-gray-900" onclick="filterProjects('web-developer')">Web Development</button>
-                <button class="filter-btn px-5 py-2 bg-white text-gray-500 border border-gray-200 rounded-full text-xs font-medium cursor-pointer transition-all hover:border-gray-900 hover:text-gray-900" onclick="filterProjects('machine-learning')">Machine Learning</button>
-                <button class="filter-btn px-5 py-2 bg-white text-gray-500 border border-gray-200 rounded-full text-xs font-medium cursor-pointer transition-all hover:border-gray-900 hover:text-gray-900" onclick="filterProjects('web-design')">UI/UX Design</button>
+                <button class="filter-btn px-5 py-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 border border-gray-900 dark:border-gray-100 rounded-full text-xs font-medium cursor-pointer transition-all" onclick="filterProjects('all')">All Projects</button>
+                <button class="filter-btn px-5 py-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium cursor-pointer transition-all hover:border-gray-900 dark:hover:border-gray-600" onclick="filterProjects('ai-data')">AI & Data</button>
+                <button class="filter-btn px-5 py-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium cursor-pointer transition-all hover:border-gray-900 dark:hover:border-gray-600" onclick="filterProjects('web-developer')">Web Development</button>
+                <button class="filter-btn px-5 py-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium cursor-pointer transition-all hover:border-gray-900 dark:hover:border-gray-600" onclick="filterProjects('web-design')">UI/UX Design</button>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- AI & Data Projects -->
-                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="ai-data">
-                    <div class="w-full h-48 bg-gray-50 overflow-hidden">
+                <div class="project-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="ai-data">
+                    <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
                         <img src="img/ai-audio-dataset.png" alt="AI Audio Dataset" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-bold mb-3">AI Audio Dataset Optimization</h3>
                         <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Data Labeling</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Audio Processing</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">ML Support</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Data Labeling</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Audio Processing</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">ML Support</span>
                         </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-3">Large-scale English audio dataset labeling for voice command detection and emotion classification.</p>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-3">Large-scale English audio dataset labeling for voice command detection and emotion classification.</p>
                     </div>
                 </div>
 
-                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="ai-data">
-                    <div class="w-full h-48 bg-gray-50 overflow-hidden">
-                        <img src="img/whatsapp-urgency.png" alt="WhatsApp Urgency" class="w-full h-full object-cover">
+                <div class="project-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="ai-data">
+                    <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+                        <img src="img/fasttext.png" alt="WhatsApp Urgency" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-bold mb-3">WhatsApp Message Urgency Classification</h3>
                         <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">FastText</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">NLP</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Flask</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">FastText</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">NLP</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Flask</span>
                         </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-3">FastText-based text classification system to detect message urgency using Flask.</p>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-3">FastText-based text classification system to detect message urgency using Flask.</p>
                     </div>
                 </div>
 
-                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="ai-data">
-                    <div class="w-full h-48 bg-gray-50 overflow-hidden">
-                        <img src="img/laravel-attendance.png" alt="Laravel Attendance" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold mb-3">Laravel Attendance & Financial System</h3>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Laravel</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">NFC</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Real-time</span>
-                        </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-3">Web-based attendance and financial reporting system with NFC integration.</p>
-                    </div>
-                </div>
-
-                <!-- Web Development Projects -->
-                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-developer">
-                    <div class="w-full h-48 bg-gray-50 overflow-hidden">
-                        <img src="img/web-monitor.png" alt="Web Monitor" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold mb-3">Web Monitor</h3>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Laravel</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">PHP</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">MySQL</span>
-                        </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-3">URL management system with automated detection to protect WordPress websites.</p>
-                        <a href="https://webmonitor.my.id/" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
-                            View Live <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-developer">
-                    <div class="w-full h-48 bg-gray-50 overflow-hidden">
-                        <img src="img/lenzo-body-coating.png" alt="Lenzo Body Coating" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold mb-3">Lenzo Body Coating</h3>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">WordPress</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">PHP Plugin</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">SEO</span>
-                        </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-3">Auto-posting system generating 329+ posts in under 60 seconds.</p>
-                        <a href="https://cejedewe.com/" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
-                            View Live <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-developer">
-                    <div class="w-full h-48 bg-gray-50 overflow-hidden">
-                        <img src="img/lintas-sukses-mandiri.png" alt="DCPipes" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold mb-3">DCPipes Manufacturing</h3>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">WordPress</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Performance</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">SEO</span>
-                        </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-3">Company profile with 82% performance improvement. PageSpeed: 45→82.</p>
-                        <a href="http://dcpipes.co.id/" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
-                            View Live <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-developer">
-                    <div class="w-full h-48 bg-gray-50 overflow-hidden">
-                        <img src="img/maklon-kosmetik-indonesia.png" alt="Maklon Kosmetik" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold mb-3">Maklon Kosmetik</h3>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">WordPress</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Elementor</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Custom CSS</span>
-                        </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-3">Custom header and footer with HTML/CSS for cosmetic company.</p>
-                        <a href="https://maklonkosmetik.co.id/" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
-                            View Live <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-developer">
-                    <div class="w-full h-48 bg-gray-50 overflow-hidden">
-                        <img src="img/intan-seafood.png" alt="Intan Seafood" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold mb-3">Intan Seafood</h3>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">WordPress</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Bilingual</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Polylang</span>
-                        </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-3">Bilingual website (ID/EN) for international seafood export company.</p>
-                        <a href="https://intanseafood.com/" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
-                            View Live <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-developer">
-                    <div class="w-full h-48 bg-gray-50 overflow-hidden">
-                        <img src="img/english-with-stu.png" alt="English with Stu" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-lg font-bold mb-3">English with Stu</h3>
-                        <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">WordPress</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Education</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Brand Design</span>
-                        </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-3">English course company profile with brand-aligned design.</p>
-                        <a href="https://glori.co.id/" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
-                            View Live <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Machine Learning Projects -->
-                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="machine-learning">
-                    <div class="w-full h-48 bg-gray-50 overflow-hidden">
+                <div class="project-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="ai-data">
+                    <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
                         <img src="img/breast-cancer-diagnosis.png" alt="Breast Cancer" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-bold mb-3">Breast Cancer Detection System</h3>
                         <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Naive Bayes</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Random Forest</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Decision Tree</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Naive Bayes</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Random Forest</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Decision Tree</span>
                         </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-3">AI system comparing three classification algorithms for cancer diagnosis.</p>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-3">AI system comparing three classification algorithms for cancer diagnosis.</p>
                         <a href="https://github.com/keyesa112/breast-cancer-prediction" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
                             View Project <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
-                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="machine-learning">
-                    <div class="w-full h-48 bg-gray-50 overflow-hidden">
+                <div class="project-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="ai-data">
+                    <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
                         <img src="img/recipe.png" alt="Recipe Classification" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-bold mb-3">Indonesian Recipe Classification</h3>
                         <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Python</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">NLP</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">KNN</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Python</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">NLP</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">KNN</span>
                         </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-3">KNN-based system to classify traditional Indonesian recipes by region.</p>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-3">KNN-based system to classify traditional Indonesian recipes by region.</p>
                         <a href="https://github.com/keyesa112/klasifikasi-resep-makanan" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
                             View Project <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- Web Development Projects -->
+                <div class="project-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-developer">
+                    <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+                        <img src="img/web-monitor.png" alt="Web Monitor" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-3">Web Monitor</h3>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Laravel</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">PHP</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">MySQL</span>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-3">URL management system with automated detection to protect WordPress websites.</p>
+                        <a href="https://webmonitor.my.id/" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
+                            View Live <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-developer">
+                    <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+                        <img src="img/spiritful.png" alt="Laravel Attendance" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-3">Laravel Attendance & Financial System</h3>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Laravel</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">NFC</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Real-time</span>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-3">Web-based attendance and financial reporting system with NFC integration.</p>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-developer">
+                    <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+                        <img src="img/lenzo-body-coating.png" alt="Lenzo Body Coating" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-3">Lenzo Body Coating</h3>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">WordPress</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">PHP Plugin</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">SEO</span>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-3">Auto-posting system generating 329+ posts in under 60 seconds.</p>
+                        <a href="" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
+                            View Live <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-developer">
+                    <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+                        <img src="img/tisco.png" alt="Tisco" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-3">Tisco</h3>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">WordPress</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Performance</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">SEO</span>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-3">Company profile with 82% performance improvement. PageSpeed: 45→82.</p>
+                        <a href="" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
+                            View Live <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-developer">
+                    <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+                        <img src="img/maklon-kosmetik-indonesia.png" alt="Maklon Kosmetik" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-3">Maklon Kosmetik</h3>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">WordPress</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Elementor</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Custom CSS</span>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-3">Custom header and footer with HTML/CSS for cosmetic company.</p>
+                        <a href="https://maklonkosmetik.co.id/" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
+                            View Live <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-developer">
+                    <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+                        <img src="img/intan-seafood.png" alt="Intan Seafood" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-3">Intan Seafood</h3>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">WordPress</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Bilingual</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Polylang</span>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-3">Bilingual website (ID/EN) for international seafood export company.</p>
+                        <a href="https://intanseafood.com/" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
+                            View Live <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-developer">
+                    <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+                        <img src="img/english-with-stu.png" alt="English with Stu" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-3">English with Stu</h3>
+                        <div class="flex flex-wrap gap-1.5 mb-3">
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">WordPress</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Education</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Brand Design</span>
+                        </div>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-3">English course company profile with brand-aligned design.</p>
+                        <a href="https://englishwithstu.id/" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
+                            View Live <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
                 <!-- UI/UX Design Projects -->
-                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-design">
-                    <div class="w-full h-48 bg-gray-50 overflow-hidden">
+                <div class="project-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-design">
+                    <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
                         <img src="img/corckcicle.png" alt="Corkcicle" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-bold mb-3">Corkcicle Landing Page Redesign</h3>
                         <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Figma</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">UI/UX</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">E-Commerce</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Figma</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">UI/UX</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">E-Commerce</span>
                         </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-3">Redesigned website concept improving visual hierarchy and UX.</p>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-3">Redesigned website concept improving visual hierarchy and UX.</p>
                         <a href="https://www.figma.com/proto/yKPiBgVep2MVBIumJFcprR/Clean.-Chill.-Corkcicle?node-id=14-862&t=APM172LPcoz4ED1i-1" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
                             View Design <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
-                <div class="project-card bg-white border border-gray-200 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-design">
-                    <div class="w-full h-48 bg-gray-50 overflow-hidden">
+                <div class="project-card bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-design">
+                    <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
                         <img src="img/greenglam.png" alt="GreenGlam" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-lg font-bold mb-3">GreenGlam Mobile App</h3>
                         <div class="flex flex-wrap gap-1.5 mb-3">
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Figma</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Mobile</span>
-                            <span class="bg-gray-50 text-gray-900 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200">Sustainability</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Figma</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Mobile</span>
+                            <span class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 px-3.5 py-1.5 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Sustainability</span>
                         </div>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-3">Mobile app promoting cosmetic recycling with rewards system.</p>
-                        <a href="#" target="_blank" class="text-red-500 text-sm font-semibold inline-flex items-center gap-1 transition-all hover:gap-2">
-                            View Design <i class="bi bi-arrow-right"></i>
-                        </a>
+                        <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-3">Mobile app promoting cosmetic recycling with rewards system.</p>
                     </div>
                 </div>
             </div>
@@ -522,29 +532,30 @@
 
             <div class="max-w-2xl mx-auto">
                 <div class="text-center mb-10">
-                    <p class="text-gray-500 text-base leading-relaxed">
+                    <p class="text-gray-500 dark:text-gray-400 text-base leading-relaxed">
                         Please contact me directly at <a href="mailto:talidahnurkeyesa@outlook.com" class="text-red-500 underline">talidahnurkeyesa@outlook.com</a> or through this form.
                     </p>
                 </div>
 
-                <!-- Contact Form with Formspree -->
-                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="bg-white border border-gray-200 rounded-xl p-8">
+                <form id="contact-form" action="https://formspree.io/f/xgolwrzr" method="POST" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-8">
                     <div class="mb-6">
-                        <label for="name" class="block text-sm font-semibold mb-2 text-gray-900">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm transition-all focus:outline-none focus:border-gray-900">
+                        <label for="name" class="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-100">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg text-sm transition-all focus:outline-none focus:border-gray-900 dark:focus:border-gray-600">
                     </div>
 
                     <div class="mb-6">
-                        <label for="email" class="block text-sm font-semibold mb-2 text-gray-900">Email</label>
-                        <input type="email" id="email" name="email" placeholder="hello@gmail.com" required class="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm transition-all focus:outline-none focus:border-gray-900">
+                        <label for="email" class="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-100">Email</label>
+                        <input type="email" id="email" name="email" placeholder="hello@gmail.com" required class="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg text-sm transition-all focus:outline-none focus:border-gray-900 dark:focus:border-gray-600">
                     </div>
 
                     <div class="mb-6">
-                        <label for="message" class="block text-sm font-semibold mb-2 text-gray-900">Message</label>
-                        <textarea id="message" name="message" placeholder="Hello! What's up?" required class="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm min-h-[150px] resize-y transition-all focus:outline-none focus:border-gray-900"></textarea>
+                        <label for="message" class="block text-sm font-semibold mb-2 text-gray-900 dark:text-gray-100">Message</label>
+                        <textarea id="message" name="message" placeholder="Hello! What's up?" required class="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 rounded-lg text-sm min-h-[150px] resize-y transition-all focus:outline-none focus:border-gray-900 dark:focus:border-gray-600"></textarea>
                     </div>
 
-                    <button type="submit" class="w-full py-3.5 bg-gray-900 text-white rounded-lg text-sm font-semibold cursor-pointer transition-all hover:bg-black hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                    <p id="form-status" class="mb-4 text-sm font-medium text-center"></p>
+
+                    <button id="submit-button" type="submit" class="w-full py-3.5 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-lg text-sm font-semibold cursor-pointer transition-all hover:bg-black dark:hover:bg-white hover:-translate-y-0.5 flex items-center justify-center gap-2">
                         <i class="bi bi-send"></i> Submit
                     </button>
                 </form>
@@ -553,7 +564,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 px-8 border-t border-gray-200 text-center text-gray-500 text-xs">
+    <footer class="py-8 px-8 border-t border-gray-200 dark:border-gray-700 text-center text-gray-500 dark:text-gray-400 text-xs">
         <div class="max-w-6xl mx-auto">
             <p>&copy; 2026 Talidah Nur Keyesa. All rights reserved.</p>
         </div>
@@ -561,15 +572,61 @@
 
     <!-- JavaScript -->
     <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const html = document.documentElement;
+
+        // Check localStorage for saved theme or default to light
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            html.classList.add('dark');
+        }
+
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            const theme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        closeMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
         // Filter Projects
         function filterProjects(category) {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => {
-                btn.classList.remove('bg-gray-900', 'text-white', 'border-gray-900');
-                btn.classList.add('bg-white', 'text-gray-500', 'border-gray-200');
+                btn.classList.remove('bg-gray-900', 'dark:bg-gray-100', 'text-white', 'dark:text-gray-900', 'border-gray-900', 'dark:border-gray-100');
+                btn.classList.add('bg-white', 'dark:bg-gray-800', 'text-gray-500', 'dark:text-gray-400', 'border-gray-200', 'dark:border-gray-700');
             });
-            event.target.classList.remove('bg-white', 'text-gray-500', 'border-gray-200');
-            event.target.classList.add('bg-gray-900', 'text-white', 'border-gray-900');
+            event.target.classList.remove('bg-white', 'dark:bg-gray-800', 'text-gray-500', 'dark:text-gray-400', 'border-gray-200', 'dark:border-gray-700');
+            event.target.classList.add('bg-gray-900', 'dark:bg-gray-100', 'text-white', 'dark:text-gray-900', 'border-gray-900', 'dark:border-gray-100');
 
             const cards = document.querySelectorAll('.project-card');
             cards.forEach(card => {
@@ -595,7 +652,7 @@
 
         // Active Navigation
         const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('nav a');
+        const navLinks = document.querySelectorAll('.nav-link');
 
         window.addEventListener('scroll', () => {
             let current = '';
@@ -608,14 +665,68 @@
             });
 
             navLinks.forEach(link => {
-                link.classList.remove('text-gray-900', 'bg-white');
-                link.classList.add('text-gray-500');
+                link.classList.remove('text-gray-900', 'dark:text-gray-100', 'bg-white', 'dark:bg-gray-700');
+                link.classList.add('text-gray-500', 'dark:text-gray-400');
                 if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.remove('text-gray-500');
-                    link.classList.add('text-gray-900', 'bg-white');
+                    link.classList.remove('text-gray-500', 'dark:text-gray-400');
+                    link.classList.add('text-gray-900', 'dark:text-gray-100', 'bg-white', 'dark:bg-gray-700');
                 }
             });
         });
+
+        // Contact Form Handler
+        var form = document.getElementById("contact-form");
+        
+        async function handleSubmit(event) {
+            event.preventDefault();
+            var status = document.getElementById("form-status");
+            var button = document.getElementById("submit-button");
+            var data = new FormData(event.target);
+            
+            button.disabled = true;
+            button.innerHTML = '<i class="bi bi-hourglass-split"></i> Sending...';
+            status.innerHTML = "";
+            
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    status.classList.remove('text-red-500');
+                    status.classList.add('text-green-600');
+                    status.innerHTML = "✓ Thanks for your submission! I'll get back to you soon.";
+                    form.reset();
+                    
+                    button.disabled = false;
+                    button.innerHTML = '<i class="bi bi-send"></i> Submit';
+                } else {
+                    response.json().then(data => {
+                        status.classList.remove('text-green-600');
+                        status.classList.add('text-red-500');
+                        if (Object.hasOwn(data, 'errors')) {
+                            status.innerHTML = "✗ " + data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            status.innerHTML = "✗ Oops! There was a problem submitting your form";
+                        }
+                        
+                        button.disabled = false;
+                        button.innerHTML = '<i class="bi bi-send"></i> Submit';
+                    })
+                }
+            }).catch(error => {
+                status.classList.remove('text-green-600');
+                status.classList.add('text-red-500');
+                status.innerHTML = "✗ Oops! There was a problem submitting your form";
+                
+                button.disabled = false;
+                button.innerHTML = '<i class="bi bi-send"></i> Submit';
+            });
+        }
+        
+        form.addEventListener("submit", handleSubmit);
     </script>
 </body>
 </html>
