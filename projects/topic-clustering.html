@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic Clustering — Resident Evil Requiem | Talidah Nur Keyesa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { primary: '#ef4444' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-lg z-50 py-6 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-8">
+            <!-- Desktop -->
+            <div class="hidden md:flex justify-center items-center gap-4">
+                <div class="flex items-center gap-8">
+                    <div class="flex gap-0 bg-gray-100 dark:bg-gray-800 rounded-full p-1.5 border border-gray-200 dark:border-gray-700">
+                        <a href="../index.html#home" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Home</a>
+                        <a href="../index.html#about" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">About</a>
+                        <a href="../index.html#experience" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Experience</a>
+                        <a href="../index.html#projects" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100">Projects</a>
+                        <a href="../index.html#testimonials" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Testimonials</a>
+                        <a href="../index.html#contact" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Contact</a>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
+                    <i class="bi bi-sun-fill text-gray-900 dark:hidden text-lg"></i>
+                    <i class="bi bi-moon-fill text-gray-100 hidden dark:block text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Mobile -->
+            <div class="md:hidden flex justify-center gap-3">
+                <div class="relative">
+                    <button id="mobile-menu-button" class="flex items-center gap-2 px-6 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                        <span>Menu</span>
+                        <i class="bi bi-chevron-down text-xs"></i>
+                    </button>
+                    <div id="mobile-menu" class="hidden absolute top-full mt-3 left-1/2 -translate-x-1/2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl overflow-hidden">
+                        <div class="flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                            <span class="text-base font-semibold text-gray-900 dark:text-gray-100">Navigation</span>
+                            <button id="close-menu" class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">
+                                <i class="bi bi-x text-xl text-gray-600 dark:text-gray-400"></i>
+                            </button>
+                        </div>
+                        <div class="py-2">
+                            <a href="../index.html#home" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">Home</a>
+                            <a href="../index.html#about" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">About</a>
+                            <a href="../index.html#experience" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Experience</a>
+                            <a href="../index.html#projects" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Projects</a>
+                            <a href="../index.html#contact" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle-mobile" class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">
+                    <i class="bi bi-sun-fill text-gray-900 dark:hidden text-lg"></i>
+                    <i class="bi bi-moon-fill text-gray-100 hidden dark:block text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20 px-8">
+        <div class="max-w-6xl mx-auto">
+
+            <!-- Breadcrumb -->
+            <nav class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+                <ol class="flex flex-wrap items-center gap-2">
+                    <li><a href="../index.html" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Home</a></li>
+                    <li class="text-gray-300 dark:text-gray-700">/</li>
+                    <li><a href="../index.html#projects" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Projects</a></li>
+                    <li class="text-gray-300 dark:text-gray-700">/</li>
+                    <li class="text-gray-900 dark:text-gray-100 font-medium">Topic Clustering</li>
+                </ol>
+            </nav>
+
+            <!-- Hero Grid -->
+            <div class="grid gap-8 lg:grid-cols-12 mb-12">
+
+                <!-- Left: Info -->
+                <div class="lg:col-span-7">
+                    <div class="inline-flex items-center gap-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 dark:text-gray-200 mb-4">
+                        <span class="h-2 w-2 rounded-full bg-red-500"></span>
+                        AI & Data · Topic Research
+                    </div>
+
+                    <h1 class="text-4xl font-bold tracking-tight mb-4">
+                        Topic Clustering <span class="text-gray-400 dark:text-gray-500 font-normal">—</span> Resident Evil Requiem
+                    </h1>
+
+                    <p class="text-base text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
+                        A topic research pipeline built specifically for Resident Evil Requiem — collecting and clustering 300+ gameplay and reaction videos from the franchise to define the topic taxonomy for Eklipse.gg's Just Chatting AI model.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <a href="#pipeline" class="px-6 py-2.5 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-lg text-sm font-semibold transition-all hover:bg-black dark:hover:bg-white hover:-translate-y-0.5 inline-flex items-center gap-2">
+                            <i class="bi bi-diagram-3"></i> See Pipeline
+                        </a>
+                        <a href="#topics" class="px-6 py-2.5 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-semibold transition-all hover:border-gray-900 dark:hover:border-gray-600 inline-flex items-center gap-2">
+                            <i class="bi bi-tags"></i> Topic Results
+                        </a>
+                    </div>
+
+                    <!-- Tech Chips -->
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Python</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">YouTube API</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">K-Means</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">TF-IDF</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">NLP</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Data Scraping</span>
+                    </div>
+                </div>
+
+                <!-- Right: Cover Card -->
+                <div class="lg:col-span-5">
+                    <div class="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+                        <div class="aspect-[16/10] w-full bg-gray-100 dark:bg-gray-900 overflow-hidden">
+                            <img src="../img/topic-clustering.png" alt="Topic Clustering Cover" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-5">
+                            <dl class="grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Role</dt>
+                                    <dd class="font-semibold">AI & Data Intern</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Company</dt>
+                                    <dd class="font-semibold">Eklipse.gg</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Game Target</dt>
+                                    <dd class="font-semibold">RE Requiem</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Status</dt>
+                                    <dd class="inline-flex items-center gap-1.5 font-semibold">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-green-500"></span> Completed
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="grid gap-8 lg:grid-cols-12">
+
+                <!-- Left: Main Content -->
+                <div class="lg:col-span-8 space-y-6">
+
+                    <!-- Background -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-4">Background</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
+                            Eklipse.gg's Just Chatting model needs to understand what streamers are talking about during gameplay. For the model to classify topics accurately, it first needs a well-defined topic taxonomy specific to each game title. You can't label what you haven't defined.
+                        </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5">
+                            This project tackled that problem for <strong class="text-gray-900 dark:text-gray-100">Resident Evil Requiem</strong> — an upcoming title at the time of research. Since there's no live gameplay data yet, the approach was to gather conversations from previous RE series gameplay videos and official teaser reaction videos, then use clustering to surface the most common and relevant discussion topics.
+                        </p>
+                        <div class="grid gap-3 sm:grid-cols-2">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-sm">
+                                <div class="font-semibold mb-2">The Problem</div>
+                                <ul class="space-y-1.5 text-gray-500 dark:text-gray-400">
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>No live RE Requiem gameplay data available yet</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>Topic taxonomy undefined — can't label without it</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>Manual topic discovery would be inconsistent and slow</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-sm">
+                                <div class="font-semibold mb-2">Goals</div>
+                                <ul class="space-y-1.5 text-gray-500 dark:text-gray-400">
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>Collect 300+ relevant videos as data source</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>Use clustering to discover natural topic groups</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>Deliver a validated topic list for the annotation team</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pipeline -->
+                    <div id="pipeline" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-5">Research Pipeline</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
+                            The pipeline runs from raw video collection all the way to a curated topic list. Each step is designed to progressively reduce noise and surface the signals that matter to the Just Chatting model.
+                        </p>
+
+                        <div class="space-y-3">
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">1</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Video Collection</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Collected 300+ videos from two source types: <strong class="text-gray-800 dark:text-gray-200">gameplay videos</strong> from previous Resident Evil series titles (RE Village, RE4 Remake, RE2 Remake, etc.) and <strong class="text-gray-800 dark:text-gray-200">reaction videos</strong> from the official RE Requiem teaser. Video metadata — titles, descriptions, transcripts where available — was pulled via YouTube Data API and stored for processing.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">2</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Text Extraction & Preprocessing</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Extracted textual signals from video titles, descriptions, and comment sections. Text was cleaned (lowercasing, stopword removal, punctuation stripping), then tokenized and prepared for vectorization.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">3</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Vectorization (TF-IDF)</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Applied TF-IDF vectorization to convert cleaned text into numerical representations. TF-IDF was preferred here because it naturally downweights generic terms (e.g. "video", "game") and amplifies domain-specific vocabulary that's more useful for topic discovery.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">4</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Clustering (K-Means)</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Ran K-Means clustering on the TF-IDF vectors. The optimal number of clusters was determined using the elbow method. Each cluster was then manually reviewed to interpret and name the underlying topic it represented.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">5</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Topic Validation & Delivery</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Cluster results were reviewed with the team to validate topic relevance and consolidate overlapping clusters. The final validated topic list was handed off to the annotation team as the taxonomy for labelling the Just Chatting audio dataset.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Topic Results -->
+                    <div id="topics" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-2">Topic Results</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5">
+                            Clustering surfaced several recurring discussion themes that naturally emerged from the RE community — spanning gameplay mechanics, lore, characters, and community reactions to the new title.
+                        </p>
+
+                        <div class="grid gap-3 sm:grid-cols-2">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-controller text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Gameplay Mechanics</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Combat strategies, puzzle solving, inventory management, boss fight reactions, and difficulty discussions.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-book text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Story & Lore</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Narrative theories, connections to previous RE titles, lore discussions, and storyline speculation for Requiem.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-person text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Characters</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Character reactions, appearance discussions, protagonist/antagonist commentary, and new character reveals in Requiem teaser.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-emoji-dizzy text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Horror & Jump Scares</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Scare reactions, atmosphere commentary, tension build-up discussions, and comparisons of horror intensity across RE titles.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-star text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Series Comparison</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Comparisons between RE Requiem and previous entries — visual quality, gameplay direction, tone, and whether it fits the classic RE formula.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-chat-square-dots text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Community Hype</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Fan excitement, teaser reactions, anticipation for release, wishlist discussions, and general community sentiment about RE Requiem.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-5">Results</h2>
+                        <div class="grid gap-4 sm:grid-cols-3">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Videos Collected</div>
+                                <div class="text-2xl font-bold text-red-500 mb-1">300+</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Gameplay + teaser reactions</div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Topic Clusters</div>
+                                <div class="text-2xl font-bold text-red-500 mb-1">6</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Validated topic categories</div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Output</div>
+                                <div class="text-2xl font-bold text-red-500 mb-1">Taxonomy</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Ready for annotation team</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Sidebar -->
+                <aside class="lg:col-span-4 space-y-6">
+
+                    <!-- Project Info -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Project Info</h3>
+                        <dl class="space-y-3 text-sm">
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Game</dt>
+                                <dd class="font-semibold">RE Requiem</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Data source</dt>
+                                <dd class="font-semibold">YouTube API</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Vectorization</dt>
+                                <dd class="font-semibold">TF-IDF</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Algorithm</dt>
+                                <dd class="font-semibold">K-Means</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2">
+                                <dt class="text-gray-500 dark:text-gray-400">Output</dt>
+                                <dd class="font-semibold">Topic Taxonomy</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <!-- Deliverables -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Deliverables</h3>
+                        <ul class="space-y-2.5 text-sm text-gray-500 dark:text-gray-400">
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                300+ video metadata dataset
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Cleaned & preprocessed text corpus
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                TF-IDF vectors + K-Means cluster output
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Validated topic taxonomy (6 categories)
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Cluster report for annotation team handoff
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Quick Navigation -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Quick Navigation</h3>
+                        <div class="grid gap-3">
+                            <a href="#pipeline" class="flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                                <span class="flex items-center gap-2"><i class="bi bi-diagram-3 text-xs"></i> Research Pipeline</span>
+                                <i class="bi bi-chevron-right text-xs text-gray-400"></i>
+                            </a>
+                            <a href="#topics" class="flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                                <span class="flex items-center gap-2"><i class="bi bi-tags text-xs"></i> Topic Results</span>
+                                <i class="bi bi-chevron-right text-xs text-gray-400"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Back -->
+                    <a href="../index.html#projects" class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                        <i class="bi bi-arrow-left text-xs"></i> Back to Projects
+                    </a>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 px-8 border-t border-gray-200 dark:border-gray-700 text-center text-gray-500 dark:text-gray-400 text-xs">
+        <div class="max-w-6xl mx-auto">
+            <p>&copy; 2026 Talidah Nur Keyesa. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const html = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') html.classList.add('dark');
+
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        closeMenuButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        mobileNavLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

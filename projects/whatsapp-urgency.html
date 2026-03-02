@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Urgency Classification | Talidah Nur Keyesa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { primary: '#ef4444' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-lg z-50 py-6 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-8">
+            <!-- Desktop -->
+            <div class="hidden md:flex justify-center items-center gap-4">
+                <div class="flex items-center gap-8">
+                    <div class="flex gap-0 bg-gray-100 dark:bg-gray-800 rounded-full p-1.5 border border-gray-200 dark:border-gray-700">
+                        <a href="../index.html#home" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Home</a>
+                        <a href="../index.html#about" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">About</a>
+                        <a href="../index.html#experience" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Experience</a>
+                        <a href="../index.html#projects" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100">Projects</a>
+                        <a href="../index.html#testimonials" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Testimonials</a>
+                        <a href="../index.html#contact" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Contact</a>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
+                    <i class="bi bi-sun-fill text-gray-900 dark:hidden text-lg"></i>
+                    <i class="bi bi-moon-fill text-gray-100 hidden dark:block text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Mobile -->
+            <div class="md:hidden flex justify-center gap-3">
+                <div class="relative">
+                    <button id="mobile-menu-button" class="flex items-center gap-2 px-6 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                        <span>Menu</span>
+                        <i class="bi bi-chevron-down text-xs"></i>
+                    </button>
+                    <div id="mobile-menu" class="hidden absolute top-full mt-3 left-1/2 -translate-x-1/2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl overflow-hidden">
+                        <div class="flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                            <span class="text-base font-semibold text-gray-900 dark:text-gray-100">Navigation</span>
+                            <button id="close-menu" class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">
+                                <i class="bi bi-x text-xl text-gray-600 dark:text-gray-400"></i>
+                            </button>
+                        </div>
+                        <div class="py-2">
+                            <a href="../index.html#home" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">Home</a>
+                            <a href="../index.html#about" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">About</a>
+                            <a href="../index.html#experience" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Experience</a>
+                            <a href="../index.html#projects" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Projects</a>
+                            <a href="../index.html#contact" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle-mobile" class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">
+                    <i class="bi bi-sun-fill text-gray-900 dark:hidden text-lg"></i>
+                    <i class="bi bi-moon-fill text-gray-100 hidden dark:block text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20 px-8">
+        <div class="max-w-6xl mx-auto">
+
+            <!-- Breadcrumb -->
+            <nav class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+                <ol class="flex flex-wrap items-center gap-2">
+                    <li><a href="../index.html" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Home</a></li>
+                    <li class="text-gray-300 dark:text-gray-700">/</li>
+                    <li><a href="../index.html#projects" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Projects</a></li>
+                    <li class="text-gray-300 dark:text-gray-700">/</li>
+                    <li class="text-gray-900 dark:text-gray-100 font-medium">WhatsApp Urgency Classification</li>
+                </ol>
+            </nav>
+
+            <!-- Hero Grid -->
+            <div class="grid gap-8 lg:grid-cols-12 mb-12">
+
+                <!-- Left: Info -->
+                <div class="lg:col-span-7">
+                    <div class="inline-flex items-center gap-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 dark:text-gray-200 mb-4">
+                        <span class="h-2 w-2 rounded-full bg-red-500"></span>
+                        AI & Data · NLP
+                    </div>
+
+                    <h1 class="text-4xl font-bold tracking-tight mb-4">
+                        WhatsApp Message Urgency Classification
+                    </h1>
+
+                    <p class="text-base text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
+                        A FastText-based NLP system that classifies incoming WhatsApp messages by urgency level — helping a pharmacy client cut through chat noise and respond to what matters most, faster.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <a href="#how-it-works" class="px-6 py-2.5 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-lg text-sm font-semibold transition-all hover:bg-black dark:hover:bg-white hover:-translate-y-0.5 inline-flex items-center gap-2">
+                            <i class="bi bi-grid"></i> How It Works
+                        </a>
+                        <a href="#pipeline" class="px-6 py-2.5 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-semibold transition-all hover:border-gray-900 dark:hover:border-gray-600 inline-flex items-center gap-2">
+                            <i class="bi bi-diagram-3"></i> ML Pipeline
+                        </a>
+                    </div>
+
+                    <!-- Tech Chips -->
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">FastText</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Python</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Flask</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Webhook</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">PWA</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">NLP</span>
+                    </div>
+                </div>
+
+                <!-- Right: Cover Card -->
+                <div class="lg:col-span-5">
+                    <div class="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+                        <div class="aspect-[16/10] w-full bg-gray-100 dark:bg-gray-900 overflow-hidden">
+                            <img src="../img/fasttext.png" alt="WhatsApp Urgency Classification" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-5">
+                            <dl class="grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Role</dt>
+                                    <dd class="font-semibold">ML + Full-stack Dev</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Client</dt>
+                                    <dd class="font-semibold">Pharmacy (SMB)</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Model</dt>
+                                    <dd class="font-semibold">FastText (fine-tuned)</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Status</dt>
+                                    <dd class="inline-flex items-center gap-1.5 font-semibold">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-green-500"></span> Completed
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="grid gap-8 lg:grid-cols-12">
+
+                <!-- Left: Main Content -->
+                <div class="lg:col-span-8 space-y-6">
+
+                    <!-- Background -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-4">Background</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5">
+                            A small pharmacy was drowning in WhatsApp messages — prescription refill requests, appointment inquiries, promotional spam, and casual chats all flooding the same inbox with no way to prioritize. Staff were manually scrolling through hundreds of messages a day, often missing time-sensitive requests from patients.
+                        </p>
+                        <div class="grid gap-3 sm:grid-cols-2">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-sm">
+                                <div class="font-semibold mb-2">Pain Points</div>
+                                <ul class="space-y-1.5 text-gray-500 dark:text-gray-400">
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>Inbox flooded with spam and low-priority chats</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>Urgent patient messages getting buried</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>No system to surface what needs immediate attention</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-sm">
+                                <div class="font-semibold mb-2">Goals</div>
+                                <ul class="space-y-1.5 text-gray-500 dark:text-gray-400">
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>Auto-classify messages into urgency levels</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>Surface urgent chats on a priority dashboard</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>Alert staff with repeat notifications until handled</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ML Pipeline -->
+                    <div id="pipeline" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-5">ML Pipeline</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
+                            FastText was chosen as the model backbone — it's lightweight, fast at inference, and reliable enough for small business use cases without needing heavy infrastructure. Since FastText is pre-trained, the pipeline focused on collecting domain-specific training data and fine-tuning it to the pharmacy context.
+                        </p>
+
+                        <div class="space-y-3">
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">1</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Data Collection</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Gathered real-world WhatsApp message samples representative of the pharmacy context — covering prescription requests, appointment questions, complaints, spam, and casual messages.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">2</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Data Cleaning</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Removed noise such as emoji-only messages, media placeholders, and duplicate entries. Text was normalized for consistent tokenization.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">3</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Labelling</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Each message was labelled into one of three classes: <strong class="text-gray-800 dark:text-gray-200">Urgent</strong> (requires immediate staff response), <strong class="text-gray-800 dark:text-gray-200">Normal</strong> (standard inquiry, can be queued), or <strong class="text-gray-800 dark:text-gray-200">Non-Urgent</strong> (spam, promotional, or irrelevant).</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">4</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Fine-tuning</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">The pre-trained FastText model was fine-tuned on the labelled dataset. Because FastText is already pre-trained on large corpora, fine-tuning required minimal data and compute while still achieving reliable domain accuracy.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Why FastText -->
+                        <div class="mt-6 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-5">
+                            <div class="text-sm font-semibold mb-3 flex items-center gap-2">
+                                <i class="bi bi-lightning-charge-fill text-red-500"></i>
+                                Why FastText?
+                            </div>
+                            <div class="grid gap-2 sm:grid-cols-3 text-xs text-gray-500 dark:text-gray-400">
+                                <div class="flex items-start gap-2">
+                                    <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                    <span><strong class="text-gray-800 dark:text-gray-200">Lightweight</strong> — runs on minimal server resources, ideal for small business hosting</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                    <span><strong class="text-gray-800 dark:text-gray-200">Fast inference</strong> — classifies messages in milliseconds, no GPU required</span>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="mt-0.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                    <span><strong class="text-gray-800 dark:text-gray-200">Pre-trained</strong> — fine-tuning needs far less labelled data than training from scratch</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- How It Works -->
+                    <div id="how-it-works" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-5">How It Works</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
+                            The deployed system connects directly to the pharmacy's WhatsApp through Fontee webhooks. Every incoming message triggers a classification in real-time, and the result drives what appears on the staff dashboard.
+                        </p>
+
+                        <!-- Flow diagram -->
+                        <div class="flex flex-wrap items-center justify-center gap-2 mb-6 text-xs font-medium">
+                            <div class="bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-2 text-center">
+                                <div class="text-gray-500 dark:text-gray-400 text-xs mb-0.5">Input</div>
+                                <div class="font-semibold">WhatsApp Chat</div>
+                            </div>
+                            <i class="bi bi-arrow-right text-gray-400"></i>
+                            <div class="bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-2 text-center">
+                                <div class="text-gray-500 dark:text-gray-400 text-xs mb-0.5">Webhook</div>
+                                <div class="font-semibold">Fontee → JSON</div>
+                            </div>
+                            <i class="bi bi-arrow-right text-gray-400"></i>
+                            <div class="bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-2 text-center">
+                                <div class="text-gray-500 dark:text-gray-400 text-xs mb-0.5">Model</div>
+                                <div class="font-semibold">FastText (Flask)</div>
+                            </div>
+                            <i class="bi bi-arrow-right text-gray-400"></i>
+                            <div class="bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-2 text-center">
+                                <div class="text-gray-500 dark:text-gray-400 text-xs mb-0.5">Output</div>
+                                <div class="font-semibold">Urgency Label</div>
+                            </div>
+                            <i class="bi bi-arrow-right text-gray-400"></i>
+                            <div class="bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-2 text-center">
+                                <div class="text-gray-500 dark:text-gray-400 text-xs mb-0.5">Action</div>
+                                <div class="font-semibold">Dashboard / Notif</div>
+                            </div>
+                        </div>
+
+                        <!-- Urgency Classes -->
+                        <h3 class="text-sm font-semibold mb-3">Urgency Classes</h3>
+                        <div class="grid gap-3 sm:grid-cols-3 mb-6">
+                            <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="h-2 w-2 rounded-full bg-red-500"></span>
+                                    <span class="text-sm font-semibold text-red-700 dark:text-red-400">Urgent</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Requires immediate staff response. Surfaces on the priority dashboard and triggers a repeat notification every 10 minutes until handled.</p>
+                            </div>
+                            <div class="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="h-2 w-2 rounded-full bg-yellow-500"></span>
+                                    <span class="text-sm font-semibold text-yellow-700 dark:text-yellow-400">Normal</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Standard inquiries that can be queued and addressed in order without time pressure.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="h-2 w-2 rounded-full bg-gray-400"></span>
+                                    <span class="text-sm font-semibold">Non-Urgent</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Spam, promotional content, or casual messages with no actionable follow-up needed.</p>
+                            </div>
+                        </div>
+
+                        <!-- Dashboard Features -->
+                        <h3 class="text-sm font-semibold mb-3">Dashboard & Notification System</h3>
+                        <div class="grid gap-4 sm:grid-cols-2">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-speedometer2 text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Priority Dashboard</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Urgent messages are surfaced front and center, showing sender info and the message content at a glance. Clears automatically once all items are handled.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-bell text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Repeat Notifications</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">If urgent messages remain unresolved, the system re-alerts staff every 10 minutes — ensuring nothing critical gets missed during busy periods.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-whatsapp text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Quick Reply Shortcut</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Each urgent message card has a one-tap shortcut that opens the conversation directly in WhatsApp, so staff can respond without any friction.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-phone text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Web & PWA</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Works as a standard web app on desktop. On mobile, it's installable as a PWA — giving staff a native-like experience with push notifications on their phones.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-5">Results</h2>
+                        <div class="grid gap-4 sm:grid-cols-3">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Urgency Classes</div>
+                                <div class="text-2xl font-bold text-red-500 mb-1">3</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Urgent, Normal, Non-Urgent</div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Notification Interval</div>
+                                <div class="text-2xl font-bold text-red-500 mb-1">10 min</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Repeat alert until resolved</div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Deployment</div>
+                                <div class="text-2xl font-bold text-red-500 mb-1">Web+PWA</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Desktop & mobile ready</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Sidebar -->
+                <aside class="lg:col-span-4 space-y-6">
+
+                    <!-- Tech Stack -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Tech Stack</h3>
+                        <dl class="space-y-3 text-sm">
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Model</dt>
+                                <dd class="font-semibold">FastText</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Backend</dt>
+                                <dd class="font-semibold">Flask (Python)</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Integration</dt>
+                                <dd class="font-semibold">Fontee Webhook</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Frontend</dt>
+                                <dd class="font-semibold">Web + PWA</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2">
+                                <dt class="text-gray-500 dark:text-gray-400">Input format</dt>
+                                <dd class="font-semibold">JSON (webhook)</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <!-- Deliverables -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Deliverables</h3>
+                        <ul class="space-y-2.5 text-sm text-gray-500 dark:text-gray-400">
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Fine-tuned FastText classification model
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Flask API endpoint consuming Fontee webhook
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Priority dashboard with urgency-sorted inbox
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                10-minute repeat notification system
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                One-tap WhatsApp reply shortcut per message
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                PWA build for mobile installation
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Quick Navigation -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Quick Navigation</h3>
+                        <div class="grid gap-3">
+                            <a href="#pipeline" class="flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                                <span class="flex items-center gap-2"><i class="bi bi-diagram-3 text-xs"></i> ML Pipeline</span>
+                                <i class="bi bi-chevron-right text-xs text-gray-400"></i>
+                            </a>
+                            <a href="#how-it-works" class="flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                                <span class="flex items-center gap-2"><i class="bi bi-speedometer2 text-xs"></i> How It Works</span>
+                                <i class="bi bi-chevron-right text-xs text-gray-400"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Back -->
+                    <a href="../index.html#projects" class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                        <i class="bi bi-arrow-left text-xs"></i> Back to Projects
+                    </a>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 px-8 border-t border-gray-200 dark:border-gray-700 text-center text-gray-500 dark:text-gray-400 text-xs">
+        <div class="max-w-6xl mx-auto">
+            <p>&copy; 2026 Talidah Nur Keyesa. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const html = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') html.classList.add('dark');
+
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        closeMenuButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        mobileNavLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

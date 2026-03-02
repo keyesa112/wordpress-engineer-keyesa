@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenGlam — Cosmetic Recycling UX/UI Design | Talidah Nur Keyesa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { primary: '#ef4444' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-lg z-50 py-6 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-8">
+            <!-- Desktop -->
+            <div class="hidden md:flex justify-center items-center gap-4">
+                <div class="flex items-center gap-8">
+                    <div class="flex gap-0 bg-gray-100 dark:bg-gray-800 rounded-full p-1.5 border border-gray-200 dark:border-gray-700">
+                        <a href="../index.html#home" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Home</a>
+                        <a href="../index.html#about" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">About</a>
+                        <a href="../index.html#experience" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Experience</a>
+                        <a href="../index.html#projects" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100">Projects</a>
+                        <a href="../index.html#contact" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Contact</a>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
+                    <i class="bi bi-sun-fill text-gray-900 dark:hidden text-lg"></i>
+                    <i class="bi bi-moon-fill text-gray-100 hidden dark:block text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Mobile -->
+            <div class="md:hidden flex justify-center gap-3">
+                <div class="relative">
+                    <button id="mobile-menu-button" class="flex items-center gap-2 px-6 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                        <span>Menu</span>
+                        <i class="bi bi-chevron-down text-xs"></i>
+                    </button>
+                    <div id="mobile-menu" class="hidden absolute top-full mt-3 left-1/2 -translate-x-1/2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl overflow-hidden">
+                        <div class="flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                            <span class="text-base font-semibold text-gray-900 dark:text-gray-100">Navigation</span>
+                            <button id="close-menu" class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">
+                                <i class="bi bi-x text-xl text-gray-600 dark:text-gray-400"></i>
+                            </button>
+                        </div>
+                        <div class="py-2">
+                            <a href="../index.html#home" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">Home</a>
+                            <a href="../index.html#about" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">About</a>
+                            <a href="../index.html#experience" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Experience</a>
+                            <a href="../index.html#projects" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Projects</a>
+                            <a href="../index.html#contact" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle-mobile" class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">
+                    <i class="bi bi-sun-fill text-gray-900 dark:hidden text-lg"></i>
+                    <i class="bi bi-moon-fill text-gray-100 hidden dark:block text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20 px-8">
+        <div class="max-w-6xl mx-auto">
+
+            <!-- Breadcrumb -->
+            <nav class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+                <ol class="flex flex-wrap items-center gap-2">
+                    <li><a href="../index.html" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Home</a></li>
+                    <li class="text-gray-300 dark:text-gray-700">/</li>
+                    <li><a href="../index.html#projects" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Projects</a></li>
+                    <li class="text-gray-300 dark:text-gray-700">/</li>
+                    <li class="text-gray-900 dark:text-gray-100 font-medium">GreenGlam</li>
+                </ol>
+            </nav>
+
+            <!-- Hero Grid -->
+            <div class="grid gap-8 lg:grid-cols-12 mb-12">
+
+                <!-- Left: Info -->
+                <div class="lg:col-span-7">
+                    <div class="inline-flex items-center gap-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 dark:text-gray-200 mb-4">
+                        <span class="h-2 w-2 rounded-full bg-red-500"></span>
+                        UX Research · UI Design
+                    </div>
+
+                    <h1 class="text-4xl font-bold tracking-tight mb-4">
+                        GreenGlam — Cosmetic Recycling & Voucher Exchange
+                    </h1>
+
+                    <p class="text-base text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
+                        A full UX research-to-UI design project for a cosmetic packaging recycling system — where users drop off empty cosmetic waste in exchange for discount vouchers, encouraging sustainable beauty habits through tangible rewards.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <a href="#research" class="px-6 py-2.5 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-lg text-sm font-semibold transition-all hover:bg-black dark:hover:bg-white hover:-translate-y-0.5 inline-flex items-center gap-2">
+                            <i class="bi bi-search"></i> UX Research
+                        </a>
+                        <a href="#design" class="px-6 py-2.5 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-semibold transition-all hover:border-gray-900 dark:hover:border-gray-600 inline-flex items-center gap-2">
+                            <i class="bi bi-palette"></i> UI Design
+                        </a>
+                    </div>
+
+                    <!-- Tech Chips -->
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Figma</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">User Interview</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Affinity Mapping</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Persona</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Wireframing</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Prototyping</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Usability Testing</span>
+                    </div>
+                </div>
+
+                <!-- Right: Cover Card -->
+                <div class="lg:col-span-5">
+                    <div class="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+                        <div class="aspect-[16/10] w-full bg-gray-100 dark:bg-gray-900 overflow-hidden">
+                            <img src="../img/greenglam.png" alt="GreenGlam Cover" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-5">
+                            <dl class="grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Role</dt>
+                                    <dd class="font-semibold">UX Researcher & UI Designer</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Tools</dt>
+                                    <dd class="font-semibold">Figma</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Domain</dt>
+                                    <dd class="font-semibold">Sustainability & Beauty</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Output</dt>
+                                    <dd class="inline-flex items-center gap-1.5 font-semibold">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-green-500"></span> Hi-fi Prototype
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="grid gap-8 lg:grid-cols-12">
+
+                <!-- Left: Main Content -->
+                <div class="lg:col-span-8 space-y-6">
+
+                    <!-- Background -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-4">Background</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
+                            The beauty industry generates billions of units of cosmetic packaging waste annually — most of which ends up in landfills because recycling programs for cosmetic containers are nearly nonexistent at the consumer level. Users have no easy, rewarding way to dispose of their empty bottles, tubes, and palettes responsibly.
+                        </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5">
+                            GreenGlam proposes a solution: a mobile app where users log their cosmetic waste drop-offs and earn discount vouchers redeemable at partner beauty stores. The design challenge was to make recycling feel less like a chore and more like a reward — which required deep UX research before a single screen was drawn.
+                        </p>
+                        <div class="grid gap-3 sm:grid-cols-2">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-sm">
+                                <div class="font-semibold mb-2">Problem Statement</div>
+                                <ul class="space-y-1.5 text-gray-500 dark:text-gray-400">
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>No accessible cosmetic recycling channels for consumers</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>Low motivation to recycle without tangible incentive</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>Users unaware of how or where to recycle beauty packaging</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-sm">
+                                <div class="font-semibold mb-2">Design Goals</div>
+                                <ul class="space-y-1.5 text-gray-500 dark:text-gray-400">
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>Make drop-off submission simple and frictionless</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>Drive engagement through voucher reward mechanics</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>Build trust with transparent point tracking</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UX Research -->
+                    <div id="research" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-2">UX Research</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
+                            Research ran before any design decisions were made. The goal was to understand how real users currently handle cosmetic waste, what motivates them to act sustainably, and what barriers stand in the way of recycling behaviour.
+                        </p>
+
+                        <!-- Research Steps -->
+                        <div class="space-y-3 mb-7">
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">1</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Secondary Research</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Reviewed existing cosmetic recycling initiatives (L'Oréal, MAC Back-to-MAC, Kiehl's), sustainability behaviour literature, and the competitive landscape of eco-reward apps to identify gaps and benchmark expectations.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">2</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">User Interviews</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Conducted in-depth interviews with beauty consumers aged 18–35. Questions explored current disposal habits, environmental awareness, past experience with loyalty/reward apps, and what would make them change behaviour.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">3</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Affinity Mapping</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Interview findings were synthesised into an affinity map, grouping raw insights into themes: recycling awareness, motivation triggers, drop-off friction, reward expectations, and trust concerns about where packaging actually goes.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">4</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">User Persona</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Built two primary personas from clustered interview data — a <strong class="text-gray-800 dark:text-gray-200">conscious beauty enthusiast</strong> who already seeks sustainable options but lacks accessible channels, and a <strong class="text-gray-800 dark:text-gray-200">deal-driven casual buyer</strong> motivated primarily by discounts who would recycle if the reward was compelling enough.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">5</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">User Journey Mapping</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Mapped end-to-end journeys for both personas — from noticing an empty cosmetic product, deciding to recycle, finding a drop-off point, submitting the item, to redeeming their earned voucher. Pain points and opportunity moments were flagged at each stage.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Key Findings -->
+                        <h3 class="text-sm font-semibold mb-3">Key Research Findings</h3>
+                        <div class="grid gap-3 sm:grid-cols-2">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-1.5">
+                                    <i class="bi bi-lightbulb text-yellow-500"></i> Motivation
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Users were willing to recycle if the reward was immediate and usable — discount vouchers for their next beauty purchase scored higher than points or badges alone.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-1.5">
+                                    <i class="bi bi-exclamation-triangle text-red-500"></i> Barrier
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">The biggest drop-off friction was not knowing where to go. Users wanted a map-based drop-off finder built directly into the recycling flow, not a separate step.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-1.5">
+                                    <i class="bi bi-shield-check text-green-500"></i> Trust
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Users wanted confirmation that their items were actually recycled — not just collected. A recycling status tracker per submission was seen as essential for building trust.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-1.5">
+                                    <i class="bi bi-phone text-blue-500"></i> Habit
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Recycling needs to feel like part of the natural beauty routine, not a separate chore. Notifications timed to product usage cycles were flagged as a strong retention hook.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UI Design -->
+                    <div id="design" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-2">UI Design</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
+                            Design decisions were directly driven by research findings. Each screen was built to reduce friction, increase reward visibility, and give users confidence that their recycling actually matters.
+                        </p>
+
+                        <!-- Design Process -->
+                        <div class="space-y-3 mb-7">
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">1</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Information Architecture</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Defined the app's core navigation structure around four pillars: Recycle (submit drop-off), Vouchers (reward wallet), History (past submissions + status), and Explore (partner drop-off map). Kept the IA shallow — maximum two taps to any key action.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">2</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Lo-fi Wireframes</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Sketched and then digitised low-fidelity wireframes in Figma for all key flows: onboarding, drop-off submission, voucher wallet, and recycling history. Validated layout hierarchy with peers before moving to visual design.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">3</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Visual Design System</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Built a design system around an earthy green and soft cream palette to reinforce the sustainability identity without sacrificing the premium feel expected by beauty consumers. Defined components: buttons, cards, badges, input fields, and the voucher reward card.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">4</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Hi-fi Prototype</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Assembled a fully interactive high-fidelity prototype in Figma covering all primary user flows — onboarding, recycling submission with item photo upload, real-time drop-off map, voucher earning + redemption, and recycling history with status tracking.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">5</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Usability Testing</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Ran usability testing sessions with 5 participants using the hi-fi prototype. Tested task completion rate for the core recycling and voucher redemption flows, noted friction points, and iterated on the design before finalising.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Key Screens -->
+                        <h3 class="text-sm font-semibold mb-3">Key Screens</h3>
+                        <div class="grid gap-3 sm:grid-cols-2">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-recycle text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Drop-off Submission</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Photo upload of empty packaging, item categorisation (skincare / makeup / haircare), quantity input, and nearest drop-off point selection — all in a single guided flow.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-ticket-perforated text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Voucher Wallet</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Earned vouchers displayed by expiry date with one-tap copy for redemption code. Point balance and next reward milestone shown prominently at the top.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-geo-alt text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Drop-off Map</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Interactive map of partner drop-off locations with distance, accepted packaging types, and operating hours — directly embedded into the submission flow.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-clock-history text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Recycling History</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Per-submission status tracker (submitted → received → processed → recycled) with a running total of CO₂ saved and packaging weight recycled to date.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-5">Results</h2>
+                        <div class="grid gap-4 sm:grid-cols-3">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Research Methods</div>
+                                <div class="text-2xl font-bold text-red-500 mb-1">5</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Secondary, interview, affinity map, persona, journey map</div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Design Output</div>
+                                <div class="text-2xl font-bold text-red-500 mb-1">Hi-fi</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Fully interactive Figma prototype</div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Core User Flows</div>
+                                <div class="text-2xl font-bold text-red-500 mb-1">4</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Recycle, voucher, map, history</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Sidebar -->
+                <aside class="lg:col-span-4 space-y-6">
+
+                    <!-- Project Info -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Project Info</h3>
+                        <dl class="space-y-3 text-sm">
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Type</dt>
+                                <dd class="font-semibold">UX Research + UI Design</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Tool</dt>
+                                <dd class="font-semibold">Figma</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Platform</dt>
+                                <dd class="font-semibold">Mobile App</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Domain</dt>
+                                <dd class="font-semibold">Sustainability</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2">
+                                <dt class="text-gray-500 dark:text-gray-400">Output</dt>
+                                <dd class="font-semibold">Hi-fi Prototype</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <!-- Deliverables -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Deliverables</h3>
+                        <ul class="space-y-2.5 text-sm text-gray-500 dark:text-gray-400">
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Secondary research report
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                User interview transcripts & affinity map
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                2 user personas + journey maps
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Lo-fi wireframes (all key screens)
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Design system & component library
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Hi-fi Figma prototype (4 core flows)
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Usability testing report & iteration notes
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Quick Navigation -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Quick Navigation</h3>
+                        <div class="grid gap-3">
+                            <a href="#research" class="flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                                <span class="flex items-center gap-2"><i class="bi bi-search text-xs"></i> UX Research</span>
+                                <i class="bi bi-chevron-right text-xs text-gray-400"></i>
+                            </a>
+                            <a href="#design" class="flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                                <span class="flex items-center gap-2"><i class="bi bi-palette text-xs"></i> UI Design</span>
+                                <i class="bi bi-chevron-right text-xs text-gray-400"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Back -->
+                    <a href="../index.html#projects" class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                        <i class="bi bi-arrow-left text-xs"></i> Back to Projects
+                    </a>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 px-8 border-t border-gray-200 dark:border-gray-700 text-center text-gray-500 dark:text-gray-400 text-xs">
+        <div class="max-w-6xl mx-auto">
+            <p>&copy; 2026 Talidah Nur Keyesa. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const html = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') html.classList.add('dark');
+
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        closeMenuButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        mobileNavLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

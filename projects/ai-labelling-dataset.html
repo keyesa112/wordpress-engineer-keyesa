@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Labelling Dataset | Talidah Nur Keyesa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { primary: '#ef4444' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-lg z-50 py-6 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-8">
+            <!-- Desktop -->
+            <div class="hidden md:flex justify-center items-center gap-4">
+                <div class="flex items-center gap-8">
+                    <div class="flex gap-0 bg-gray-100 dark:bg-gray-800 rounded-full p-1.5 border border-gray-200 dark:border-gray-700">
+                        <a href="../index.html#home" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Home</a>
+                        <a href="../index.html#about" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">About</a>
+                        <a href="../index.html#experience" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Experience</a>
+                        <a href="../index.html#projects" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100">Projects</a>
+                        <a href="../index.html#contact" class="nav-link text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Contact</a>
+                    </div>
+                </div>
+                <button id="theme-toggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
+                    <i class="bi bi-sun-fill text-gray-900 dark:hidden text-lg"></i>
+                    <i class="bi bi-moon-fill text-gray-100 hidden dark:block text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Mobile -->
+            <div class="md:hidden flex justify-center gap-3">
+                <div class="relative">
+                    <button id="mobile-menu-button" class="flex items-center gap-2 px-6 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                        <span>Menu</span>
+                        <i class="bi bi-chevron-down text-xs"></i>
+                    </button>
+                    <div id="mobile-menu" class="hidden absolute top-full mt-3 left-1/2 -translate-x-1/2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl overflow-hidden">
+                        <div class="flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                            <span class="text-base font-semibold text-gray-900 dark:text-gray-100">Navigation</span>
+                            <button id="close-menu" class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">
+                                <i class="bi bi-x text-xl text-gray-600 dark:text-gray-400"></i>
+                            </button>
+                        </div>
+                        <div class="py-2">
+                            <a href="../index.html#home" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">Home</a>
+                            <a href="../index.html#about" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">About</a>
+                            <a href="../index.html#experience" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Experience</a>
+                            <a href="../index.html#projects" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Projects</a>
+                            <a href="../index.html#contact" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle-mobile" class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">
+                    <i class="bi bi-sun-fill text-gray-900 dark:hidden text-lg"></i>
+                    <i class="bi bi-moon-fill text-gray-100 hidden dark:block text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="pt-32 pb-20 px-8">
+        <div class="max-w-6xl mx-auto">
+
+            <!-- Breadcrumb -->
+            <nav class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+                <ol class="flex flex-wrap items-center gap-2">
+                    <li><a href="../index.html" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Home</a></li>
+                    <li class="text-gray-300 dark:text-gray-700">/</li>
+                    <li><a href="../index.html#projects" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Projects</a></li>
+                    <li class="text-gray-300 dark:text-gray-700">/</li>
+                    <li class="text-gray-900 dark:text-gray-100 font-medium">AI Labelling Dataset</li>
+                </ol>
+            </nav>
+
+            <!-- Hero Grid -->
+            <div class="grid gap-8 lg:grid-cols-12 mb-12">
+
+                <!-- Left: Info -->
+                <div class="lg:col-span-7">
+                    <div class="inline-flex items-center gap-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 dark:text-gray-200 mb-4">
+                        <span class="h-2 w-2 rounded-full bg-red-500"></span>
+                        AI & Data · Eklipse.gg
+                    </div>
+
+                    <h1 class="text-4xl font-bold tracking-tight mb-4">
+                        AI Labelling Dataset
+                    </h1>
+
+                    <p class="text-base text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
+                        An end-to-end data pipeline — from gathering raw audio clips and game frames, to annotating emotion, loudness, topic, and sentiment — supporting AI model development at Eklipse.gg.
+                    </p>
+
+                    <!-- Tech Chips -->
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Data Gathering</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Audio Labelling</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Image Labelling</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">YOLO</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">NLP</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Label Studio</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Python</span>
+                    </div>
+                </div>
+
+                <!-- Right: Meta Card -->
+                <div class="lg:col-span-5">
+                    <div class="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+                        <div class="aspect-[16/10] w-full bg-gray-100 dark:bg-gray-900 overflow-hidden">
+                            <img src="../img/ai-audio-dataset.png" alt="AI Labelling Dataset Cover" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-5">
+                            <dl class="grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Role</dt>
+                                    <dd class="font-semibold">AI & Data Intern</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Period</dt>
+                                    <dd class="font-semibold">2025 – Present</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Company</dt>
+                                    <dd class="font-semibold">Eklipse.gg</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Status</dt>
+                                    <dd class="inline-flex items-center gap-1.5 font-semibold">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-green-500"></span> Ongoing
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="grid gap-8 lg:grid-cols-12">
+
+                <!-- Left: Main Content -->
+                <div class="lg:col-span-8 space-y-6">
+
+                    <!-- Overview -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-4">Overview</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
+                            This work goes beyond simple labelling — it's a complete end-to-end pipeline from raw data collection all the way to production-ready datasets. Each cycle starts with data gathering, moves through annotation, then passes validation, and loops back to re-annotation whenever quality falls short of the required standard.
+                        </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                            There are two parallel tracks running simultaneously: <strong class="text-gray-900 dark:text-gray-100">audio data</strong> powering the Just Chatting and Voice Command models, and <strong class="text-gray-900 dark:text-gray-100">image/frame data</strong> feeding the YOLO-based visual detection model. Both tracks are integral parts of the broader AI ecosystem at Eklipse.gg.
+                        </p>
+                    </div>
+
+                    <!-- Audio Labelling -->
+                    <div id="audio" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-700">
+                                <i class="bi bi-mic-fill text-gray-700 dark:text-gray-300"></i>
+                            </span>
+                            <h2 class="text-lg font-bold tracking-tight">Audio Data — Just Chatting & Voice Command</h2>
+                        </div>
+
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
+                            Audio datasets are collected from multiple streaming and short-form video platforms — Twitch clips, YouTube Shorts, and regular YouTube videos. Each clip ranges from <strong class="text-gray-900 dark:text-gray-100">3 to 20 minutes</strong> in length, with a strict focus on English-language content to ensure the trained models generalize well across diverse accents, speaking styles, and conversational contexts.
+                        </p>
+
+                        <!-- Process Steps -->
+                        <div class="space-y-3 mb-6">
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">1</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Data Gathering</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Collecting short clips from Twitch, YouTube Shorts, and YouTube. Clips are selected based on audio quality, language, and content relevance to the target model category (Just Chatting or Voice Command).</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">2</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Annotation</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Each audio segment is labelled across multiple dimensions: <strong class="text-gray-800 dark:text-gray-200">emotion</strong> (shouting, laughing, screaming, neutral, etc.), <strong class="text-gray-800 dark:text-gray-200">loudness level</strong>, <strong class="text-gray-800 dark:text-gray-200">topic</strong> (game discussion, reaction, commentary), and <strong class="text-gray-800 dark:text-gray-200">sentiment</strong> (positive, negative, neutral).</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">3</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Validation & Re-annotation</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Datasets go through inter-annotator validation. Inconsistent or ambiguous entries are flagged and returned for re-annotation with updated guidelines, maintaining high annotation reliability throughout the pipeline.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Label Categories -->
+                        <h3 class="text-sm font-semibold mb-3">Label Categories</h3>
+                        <div class="grid gap-3 sm:grid-cols-2">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-1.5">
+                                    <i class="bi bi-emoji-expressionless"></i> Emotion
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Shouting</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Laughing</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Screaming</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Excited</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Neutral</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Frustrated</span>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-1.5">
+                                    <i class="bi bi-volume-up"></i> Loudness
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Quiet</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Normal</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Loud</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Very Loud</span>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-1.5">
+                                    <i class="bi bi-chat-dots"></i> Topic
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Just Chatting</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Game Commentary</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Reaction</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Voice Command</span>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-1.5">
+                                    <i class="bi bi-bar-chart"></i> Sentiment
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Positive</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Negative</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Neutral</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Image Labelling -->
+                    <div id="image" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-gray-100 dark:bg-gray-700">
+                                <i class="bi bi-image text-gray-700 dark:text-gray-300"></i>
+                            </span>
+                            <h2 class="text-lg font-bold tracking-tight">Image / Frame Data — YOLO UI Detection</h2>
+                        </div>
+
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
+                            Running in parallel with audio work, this track covers the collection and annotation of gameplay video frames. The dataset trains a YOLO model responsible for detecting in-game UI elements and visual context in real-time — identifying what game is being played, what weapons are in use, and what events are unfolding on screen.
+                        </p>
+
+                        <!-- Process Steps -->
+                        <div class="space-y-3 mb-6">
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">1</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Frame Extraction</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Frames are extracted from gameplay videos across various game titles. Selection ensures sufficient scene variety — lobby screens, in-game moments, kill feeds, inventory views, and more.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">2</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Bounding Box Annotation</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Each frame is labelled with bounding boxes around relevant elements: the game being played, the weapon currently in use, in-game events (kill, death, bomb plant, etc.), and other UI elements targeted by the detection model.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">3</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Quality Check</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Datasets go through a review pass to verify bounding box accuracy and catch any missed or misclassified labels — especially for small or overlapping UI elements where precision matters most.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detection Targets -->
+                        <h3 class="text-sm font-semibold mb-3">Detection Targets</h3>
+                        <div class="grid gap-3 sm:grid-cols-3">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-1.5">
+                                    <i class="bi bi-controller"></i> Game Type
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">FPS</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">MOBA</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Battle Royale</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">RPG</span>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-1.5">
+                                    <i class="bi bi-crosshair"></i> Weapon / Item
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Rifle</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Sniper</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Pistol</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Melee</span>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-1.5">
+                                    <i class="bi bi-lightning"></i> Event
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Kill</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Death</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Win / Lose</span>
+                                    <span class="text-xs bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-0.5 rounded-md">Objective</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Workflow -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-5">Tools & Workflow</h2>
+                        <div class="grid gap-4 sm:grid-cols-2">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-tag text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Label Studio</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Primary tool for audio annotation — timeline segmentation, multi-label per segment, and a review queue for validation passes.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-bounding-box text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">CVAT / Roboflow</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Bounding box annotation for image datasets, with direct export to YOLO-compatible formats ready for model training.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="devicon-python-plain text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Python Scripts</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Automated pipeline for downloading clips via Twitch API and Google API, normalizing metadata, and batch preprocessing before annotation.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700">
+                                        <i class="bi bi-table text-xs text-gray-700 dark:text-gray-300"></i>
+                                    </span>
+                                    <span class="text-sm font-semibold">Spreadsheet Tracking</span>
+                                </div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Annotation progress, review status, and re-annotation flags are tracked collaboratively via shared spreadsheets across the team.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Takeaways -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-5">Key Takeaways</h2>
+                        <div class="grid gap-4 sm:grid-cols-3">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Dataset Language</div>
+                                <div class="text-xl font-bold text-red-500 mb-1">English</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">100% English audio coverage</div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Clip Duration</div>
+                                <div class="text-xl font-bold text-red-500 mb-1">3–20 min</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Per audio clip gathered</div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Data Tracks</div>
+                                <div class="text-xl font-bold text-red-500 mb-1">2</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Audio + Image in parallel</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right: Sidebar -->
+                <aside class="lg:col-span-4 space-y-6">
+
+                    <!-- Role & Scope -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Role & Scope</h3>
+                        <dl class="space-y-3 text-sm">
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Data type</dt>
+                                <dd class="font-semibold">Audio + Image</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Sources</dt>
+                                <dd class="font-semibold">Twitch, YT, Shorts</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Language</dt>
+                                <dd class="font-semibold">English</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Model target</dt>
+                                <dd class="font-semibold">YOLO + NLP</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2">
+                                <dt class="text-gray-500 dark:text-gray-400">Location</dt>
+                                <dd class="font-semibold">Remote · Jakarta</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <!-- Deliverables -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Deliverables</h3>
+                        <ul class="space-y-2.5 text-sm text-gray-500 dark:text-gray-400">
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Annotated audio dataset (emotion, loudness, topic, sentiment)
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                YOLO-format image dataset (game, weapon, event detection)
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Automated data collection pipeline (Twitch API + Google API)
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Annotation validation & re-annotation logs
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Topic clustering report for Just Chatting model
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Quick Navigation -->
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Quick Navigation</h3>
+                        <div class="grid gap-3">
+                            <a href="#audio" class="flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                                <span class="flex items-center gap-2"><i class="bi bi-mic-fill text-xs"></i> Audio Labelling</span>
+                                <i class="bi bi-chevron-right text-xs text-gray-400"></i>
+                            </a>
+                            <a href="#image" class="flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                                <span class="flex items-center gap-2"><i class="bi bi-image text-xs"></i> Image Labelling</span>
+                                <i class="bi bi-chevron-right text-xs text-gray-400"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Back -->
+                    <a href="../index.html#projects" class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                        <i class="bi bi-arrow-left text-xs"></i> Back to Projects
+                    </a>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 px-8 border-t border-gray-200 dark:border-gray-700 text-center text-gray-500 dark:text-gray-400 text-xs">
+        <div class="max-w-6xl mx-auto">
+            <p>&copy; 2026 Talidah Nur Keyesa. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const html = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') html.classList.add('dark');
+
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        closeMenuButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        mobileNavLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
