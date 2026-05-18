@@ -39,7 +39,7 @@
                 </div>
                 
                 <!-- Dark Mode Toggle -->
-                <button id="theme-toggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
+                <button id="theme-toggle" aria-label="Toggle dark mode" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-all">
                     <i class="bi bi-sun-fill text-gray-900 dark:hidden text-lg"></i>
                     <i class="bi bi-moon-fill text-gray-100 hidden dark:block text-lg"></i>
                 </button>
@@ -48,7 +48,7 @@
             <!-- Mobile Navigation -->
             <div class="md:hidden flex justify-center gap-3">
                 <div class="relative">
-                    <button id="mobile-menu-button" class="flex items-center gap-2 px-6 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                    <button id="mobile-menu-button" aria-label="Open navigation menu" aria-expanded="false" class="flex items-center gap-2 px-6 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 hover:border-gray-900 dark:hover:border-gray-600 transition-all">
                         <span>Menu</span>
                         <i class="bi bi-chevron-down text-xs"></i>
                     </button>
@@ -57,7 +57,7 @@
                     <div id="mobile-menu" class="hidden absolute top-full mt-3 left-1/2 -translate-x-1/2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl overflow-hidden">
                         <div class="flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-gray-700">
                             <span class="text-base font-semibold text-gray-900 dark:text-gray-100">Navigation</span>
-                            <button id="close-menu" class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">
+                            <button id="close-menu" aria-label="Close navigation menu" class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">
                                 <i class="bi bi-x text-xl text-gray-600 dark:text-gray-400"></i>
                             </button>
                         </div>
@@ -66,14 +66,13 @@
                             <a href="#about" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">About</a>
                             <a href="#experience" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Experience</a>
                             <a href="#projects" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Projects</a>
-                            <a href="#testimonials" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Testimonials</a>
                             <a href="#contact" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Contact</a>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Mobile Dark Mode Toggle -->
-                <button id="theme-toggle-mobile" class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">
+                <button id="theme-toggle-mobile" aria-label="Toggle dark mode" class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">
                     <i class="bi bi-sun-fill text-gray-900 dark:hidden text-lg"></i>
                     <i class="bi bi-moon-fill text-gray-100 hidden dark:block text-lg"></i>
                 </button>
@@ -82,10 +81,10 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-36 pb-24 px-8 text-center" id="home">
+    <section class="scroll-mt-28 pt-20 pb-20 px-8 text-center" id="home">
         <div class="max-w-6xl mx-auto">
-            <div class="mb-8">
-                <img src="img/profile.png" alt="Talidah Nur Keyesa" class="w-36 h-36 rounded-full border-4 border-white dark:border-gray-800 shadow-lg mx-auto">
+            <div class="mb-6">
+                <img src="img/profile.png" alt="Talidah Nur Keyesa" class="w-32 h-32 rounded-full border-4 border-white dark:border-gray-800 shadow-lg mx-auto">
             </div>
             
             <div class="inline-flex items-center gap-2 bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
@@ -93,17 +92,17 @@
                 Available for work!
             </div>
             
-            <p class="text-gray-500 dark:text-gray-400 text-sm mb-8 flex items-center justify-center gap-2">
+            <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 flex items-center justify-center gap-2">
                 <i class="bi bi-geo-alt-fill"></i>
                 Currently based in Surabaya — open to relocate and remote opportunities
             </p>
             
-            <h1 class="text-5xl font-bold leading-tight mb-6 tracking-tight">
-                Hi I'm <span class="text-red-500">Talidah Nur Keyesa</span> 
-                <p>Web Developer · AI & Data Optimization</p>
+            <h1 class="text-5xl font-bold leading-tight mb-4 tracking-tight">
+                Hi I'm <span class="text-red-500">Talidah Nur Keyesa</span>
             </h1>
+            <p class="text-4xl font-bold leading-tight tracking-tight mb-6">Junior Web Developer</p>
             
-            <p class="text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto mb-10">
+            <p class="text-lg text-gray-500 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto mb-8">
                I’m a web development enthusiast with hands-on experience in Laravel, WordPress, and modern frameworks. I enjoy building fast, user-friendly websites and have worked on AI data labeling and machine learning support projects. Always learning, always improving.
             </p>
             
@@ -135,7 +134,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="py-20 px-8" id="about">
+    <section class="scroll-mt-28 py-20 px-8" id="about">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-3 tracking-tight">About Me</h2>
@@ -144,9 +143,11 @@
             <div class="max-w-4xl mx-auto text-center mb-20">
                 <p class="text-base leading-relaxed mb-6 dark:text-gray-300">
                    I'm Talidah Nur Keyesa, a final-year Informatics Engineering student and BNSP Certified Associate Data Scientist with hands-on experience in full-stack web development, automated data extraction, and AI data optimization. I contribute to end-to-end development systems using Python and Laravel  from scraping and parsing structured data to designing scalable backends and cloud-integrated reporting.
+                </p>
                 
                 <p class="text-base leading-relaxed mb-6 dark:text-gray-300">
                    Comfortable working remotely and proficient with collaboration tools such as Microsoft Teams, Outlook, and Slack, I thrive in fast-paced environments and I'm always looking for opportunities to grow alongside impactful teams and build products that matter.
+                </p>
             </div>
 
             <!-- Tech Stack Icons -->
@@ -202,7 +203,7 @@
     </section>
 
     <!-- Experience Section -->
-    <section class="py-20 px-8" id="experience">
+    <section class="scroll-mt-28 py-20 px-8" id="experience">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-3 tracking-tight">My Experience</h2>
@@ -336,7 +337,7 @@
     </section>
 
     <!-- Projects Section -->
-    <section class="py-20 px-8" id="projects">
+    <section class="scroll-mt-28 py-20 px-8" id="projects">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-3 tracking-tight">Projects</h2>
@@ -344,10 +345,10 @@
             </div>
 
             <div class="flex gap-2 mb-10 flex-wrap justify-center">
-                <button class="filter-btn px-5 py-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 border border-gray-900 dark:border-gray-100 rounded-full text-xs font-medium cursor-pointer transition-all" onclick="filterProjects('all')">All Projects</button>
-                <button class="filter-btn px-5 py-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium cursor-pointer transition-all hover:border-gray-900 dark:hover:border-gray-600" onclick="filterProjects('ai-data')">AI & Data</button>
-                <button class="filter-btn px-5 py-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium cursor-pointer transition-all hover:border-gray-900 dark:hover:border-gray-600" onclick="filterProjects('web-developer')">Web Development</button>
-                <button class="filter-btn px-5 py-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium cursor-pointer transition-all hover:border-gray-900 dark:hover:border-gray-600" onclick="filterProjects('web-design')">UI/UX Design</button>
+                <button class="filter-btn px-5 py-2 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 border border-gray-900 dark:border-gray-100 rounded-full text-xs font-medium cursor-pointer transition-all" onclick="filterProjects(event, 'all')">All Projects</button>
+                <button class="filter-btn px-5 py-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium cursor-pointer transition-all hover:border-gray-900 dark:hover:border-gray-600" onclick="filterProjects(event, 'ai-data')">AI & Data</button>
+                <button class="filter-btn px-5 py-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium cursor-pointer transition-all hover:border-gray-900 dark:hover:border-gray-600" onclick="filterProjects(event, 'web-developer')">Web Development</button>
+                <button class="filter-btn px-5 py-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700 rounded-full text-xs font-medium cursor-pointer transition-all hover:border-gray-900 dark:hover:border-gray-600" onclick="filterProjects(event, 'web-design')">UI/UX Design</button>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -399,7 +400,7 @@
                 <!-- 3. Topic Clustering -->
                 <div class="project-card flex flex-col bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="ai-data">
                     <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
-                        <img src="img/topic-clustering.png" alt="Breast Cancer" class="w-full h-full object-cover">
+                        <img src="img/topic-clustering.png" alt="Topic Clustering dashboard" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-1">
                         <h3 class="text-lg font-bold mb-3">Topic Clustering</h3>
@@ -420,7 +421,7 @@
                 <!-- 4. Web Monitor -->
                 <div class="project-card flex flex-col bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden transition-all hover:shadow-xl hover:-translate-y-1" data-category="web-developer">
                     <div class="w-full h-48 bg-gray-50 dark:bg-gray-900 overflow-hidden">
-                        <img src="img/judol-scanner.png" alt="Web Monitor" class="w-full h-full object-cover">
+                        <img src="img/judol-scanner.png" alt="Judol Scanner dashboard" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6 flex flex-col flex-1">
                         <h3 class="text-lg font-bold mb-3">Judol Scanner</h3>
@@ -605,7 +606,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="py-20 px-8" id="contact">
+    <section class="scroll-mt-28 py-20 px-8" id="contact">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-3 tracking-tight">Get In Touch</h2>
@@ -681,33 +682,38 @@
 
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', String(!mobileMenu.classList.contains('hidden')));
         });
 
         closeMenuButton.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
         });
 
         mobileNavLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
             });
         });
 
         document.addEventListener('click', (e) => {
             if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
                 mobileMenu.classList.add('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
             }
         });
 
         // Filter Projects
-        function filterProjects(category) {
+        function filterProjects(event, category) {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => {
                 btn.classList.remove('bg-gray-900', 'dark:bg-gray-100', 'text-white', 'dark:text-gray-900', 'border-gray-900', 'dark:border-gray-100');
                 btn.classList.add('bg-white', 'dark:bg-gray-800', 'text-gray-500', 'dark:text-gray-400', 'border-gray-200', 'dark:border-gray-700');
             });
-            event.target.classList.remove('bg-white', 'dark:bg-gray-800', 'text-gray-500', 'dark:text-gray-400', 'border-gray-200', 'dark:border-gray-700');
-            event.target.classList.add('bg-gray-900', 'dark:bg-gray-100', 'text-white', 'dark:text-gray-900', 'border-gray-900', 'dark:border-gray-100');
+            const activeButton = event.currentTarget;
+            activeButton.classList.remove('bg-white', 'dark:bg-gray-800', 'text-gray-500', 'dark:text-gray-400', 'border-gray-200', 'dark:border-gray-700');
+            activeButton.classList.add('bg-gray-900', 'dark:bg-gray-100', 'text-white', 'dark:text-gray-900', 'border-gray-900', 'dark:border-gray-100');
 
             const cards = document.querySelectorAll('.project-card');
             cards.forEach(card => {
@@ -726,7 +732,7 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
