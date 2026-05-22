@@ -97,7 +97,7 @@
                     </h1>
 
                     <p class="text-base text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
-                        A FastText-based NLP system that classifies incoming WhatsApp messages by urgency level — helping a pharmacy client cut through chat noise and respond to what matters most, faster.
+                        A FastText-based NLP system that classifies incoming WhatsApp messages by urgency level, streams dashboard updates in real time, and maps phone numbers to WhatsApp identities for reliable ticket handling.
                     </p>
 
                     <!-- CTA Buttons -->
@@ -115,7 +115,8 @@
                         <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">FastText</span>
                         <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Python</span>
                         <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Flask</span>
-                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Webhook</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Baileys Node.js</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">SSE</span>
                         <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">PWA</span>
                         <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">NLP</span>
                     </div>
@@ -250,7 +251,7 @@
                     <div id="how-it-works" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
                         <h2 class="text-lg font-bold tracking-tight mb-5">How It Works</h2>
                         <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
-                            The deployed system connects directly to the pharmacy's WhatsApp through Fontee webhooks. Every incoming message triggers a classification in real-time, and the result drives what appears on the staff dashboard.
+                            The deployed system connects to the pharmacy's WhatsApp through a Fonnte webhook and a Baileys Node.js listener. Every incoming message is normalized, mapped from phone number to WhatsApp identity, classified in real time, and streamed to the staff dashboard through Server-Sent Events (SSE).
                         </p>
 
                         <!-- Flow diagram -->
@@ -262,7 +263,12 @@
                             <i class="bi bi-arrow-right text-gray-400"></i>
                             <div class="bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-2 text-center">
                                 <div class="text-gray-500 dark:text-gray-400 text-xs mb-0.5">Webhook</div>
-                                <div class="font-semibold">Fontee → JSON</div>
+                                <div class="font-semibold">Fonnte / Baileys</div>
+                            </div>
+                            <i class="bi bi-arrow-right text-gray-400"></i>
+                            <div class="bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-2 text-center">
+                                <div class="text-gray-500 dark:text-gray-400 text-xs mb-0.5">Mapping</div>
+                                <div class="font-semibold">Phone → WA ID</div>
                             </div>
                             <i class="bi bi-arrow-right text-gray-400"></i>
                             <div class="bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-2 text-center">
@@ -277,7 +283,7 @@
                             <i class="bi bi-arrow-right text-gray-400"></i>
                             <div class="bg-gray-100 dark:bg-gray-700 rounded-lg px-3 py-2 text-center">
                                 <div class="text-gray-500 dark:text-gray-400 text-xs mb-0.5">Action</div>
-                                <div class="font-semibold">Dashboard / Notif</div>
+                                <div class="font-semibold">SSE / Notif</div>
                             </div>
                         </div>
 
@@ -317,7 +323,7 @@
                                     </span>
                                     <span class="text-sm font-semibold">Priority Dashboard</span>
                                 </div>
-                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Urgent messages are surfaced front and center, showing sender info and the message content at a glance. Clears automatically once all items are handled.</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Urgent messages are surfaced front and center with sender info and message content. The dashboard updates through SSE so staff can see new urgent tickets without manually refreshing.</p>
                             </div>
                             <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
                                 <div class="flex items-center gap-2 mb-2">
@@ -335,7 +341,7 @@
                                     </span>
                                     <span class="text-sm font-semibold">Quick Reply Shortcut</span>
                                 </div>
-                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Each urgent message card has a one-tap shortcut that opens the conversation directly in WhatsApp, so staff can respond without any friction.</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Each urgent message card uses stored phone-to-WhatsApp mapping data to open the correct conversation directly, so staff can respond without searching manually.</p>
                             </div>
                             <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
                                 <div class="flex items-center gap-2 mb-2">
@@ -364,9 +370,9 @@
                                 <div class="text-xs text-gray-500 dark:text-gray-400">Repeat alert until resolved</div>
                             </div>
                             <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
-                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Deployment</div>
-                                <div class="text-2xl font-bold text-red-500 mb-1">Web+PWA</div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">Desktop & mobile ready</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Realtime Updates</div>
+                                <div class="text-2xl font-bold text-red-500 mb-1">SSE</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Live dashboard refresh</div>
                             </div>
                         </div>
                     </div>
@@ -389,15 +395,15 @@
                             </div>
                             <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
                                 <dt class="text-gray-500 dark:text-gray-400">Integration</dt>
-                                <dd class="font-semibold">Fontee Webhook</dd>
+                                <dd class="font-semibold">Fonnte + Baileys</dd>
                             </div>
                             <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
-                                <dt class="text-gray-500 dark:text-gray-400">Frontend</dt>
-                                <dd class="font-semibold">Web + PWA</dd>
+                                <dt class="text-gray-500 dark:text-gray-400">Realtime</dt>
+                                <dd class="font-semibold">SSE</dd>
                             </div>
                             <div class="flex justify-between gap-4 py-2">
-                                <dt class="text-gray-500 dark:text-gray-400">Input format</dt>
-                                <dd class="font-semibold">JSON (webhook)</dd>
+                                <dt class="text-gray-500 dark:text-gray-400">Mapping</dt>
+                                <dd class="font-semibold">Phone → PN/LID</dd>
                             </div>
                         </dl>
                     </div>
@@ -412,11 +418,19 @@
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
-                                Flask API endpoint consuming Fontee webhook
+                                Flask API endpoint consuming Fonnte webhook payloads
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
-                                Priority dashboard with urgency-sorted inbox
+                                Baileys Node.js listener for WhatsApp identity resolution
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Phone number to PN/LID mapping persistence
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
+                                Priority dashboard with SSE-based urgency updates
                             </li>
                             <li class="flex items-start gap-2">
                                 <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>
