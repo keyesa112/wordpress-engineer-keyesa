@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer Persona Framework | Talidah Nur Keyesa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { primary: '#ef4444' } } }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors duration-300">
+
+    <nav class="fixed top-0 w-full bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-lg z-50 py-6 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-8">
+            <div class="hidden md:flex justify-center items-center gap-4">
+                <div class="flex gap-0 bg-gray-100 dark:bg-gray-800 rounded-full p-1.5 border border-gray-200 dark:border-gray-700">
+                    <a href="../index.html#home" class="text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Home</a>
+                    <a href="../index.html#about" class="text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">About</a>
+                    <a href="../index.html#experience" class="text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Experience</a>
+                    <a href="../index.html#projects" class="text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100">Projects</a>
+                    <a href="../index.html#contact" class="text-gray-500 dark:text-gray-400 text-sm font-medium px-5 py-2 rounded-full transition-all hover:text-gray-900 dark:hover:text-gray-100 hover:bg-white dark:hover:bg-gray-700">Contact</a>
+                </div>
+                <button id="theme-toggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-all" aria-label="Toggle theme">
+                    <i class="bi bi-sun-fill text-gray-900 dark:hidden text-lg"></i>
+                    <i class="bi bi-moon-fill text-gray-100 hidden dark:block text-lg"></i>
+                </button>
+            </div>
+
+            <div class="md:hidden flex justify-center gap-3">
+                <div class="relative">
+                    <button id="mobile-menu-button" class="flex items-center gap-2 px-6 py-2.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-sm font-medium text-gray-900 dark:text-gray-100 hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                        <span>Menu</span>
+                        <i class="bi bi-chevron-down text-xs"></i>
+                    </button>
+                    <div id="mobile-menu" class="hidden absolute top-full mt-3 left-1/2 -translate-x-1/2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl overflow-hidden">
+                        <div class="flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+                            <span class="text-base font-semibold text-gray-900 dark:text-gray-100">Navigation</span>
+                            <button id="close-menu" class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all" aria-label="Close menu">
+                                <i class="bi bi-x text-xl text-gray-600 dark:text-gray-400"></i>
+                            </button>
+                        </div>
+                        <div class="py-2">
+                            <a href="../index.html#home" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all">Home</a>
+                            <a href="../index.html#about" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">About</a>
+                            <a href="../index.html#experience" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Experience</a>
+                            <a href="../index.html#projects" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Projects</a>
+                            <a href="../index.html#contact" class="mobile-nav-link block px-6 py-3 text-gray-700 dark:text-gray-300 text-base hover:bg-gray-50 dark:hover:bg-gray-700 transition-all border-t border-gray-100 dark:border-gray-700">Contact</a>
+                        </div>
+                    </div>
+                </div>
+                <button id="theme-toggle-mobile" class="w-10 h-10 rounded-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-700 transition-all" aria-label="Toggle theme">
+                    <i class="bi bi-sun-fill text-gray-900 dark:hidden text-lg"></i>
+                    <i class="bi bi-moon-fill text-gray-100 hidden dark:block text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 px-8">
+        <div class="max-w-6xl mx-auto">
+            <nav class="mb-8 text-sm text-gray-500 dark:text-gray-400">
+                <ol class="flex flex-wrap items-center gap-2">
+                    <li><a href="../index.html" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Home</a></li>
+                    <li class="text-gray-300 dark:text-gray-700">/</li>
+                    <li><a href="../index.html#projects" class="hover:text-gray-900 dark:hover:text-gray-100 transition-colors">Projects</a></li>
+                    <li class="text-gray-300 dark:text-gray-700">/</li>
+                    <li class="text-gray-900 dark:text-gray-100 font-medium">Gamer Persona Framework</li>
+                </ol>
+            </nav>
+
+            <div class="grid gap-8 lg:grid-cols-12 mb-12">
+                <div class="lg:col-span-7">
+                    <div class="inline-flex items-center gap-2 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 dark:text-gray-200 mb-4">
+                        <span class="h-2 w-2 rounded-full bg-red-500"></span>
+                        AI & Data · Persona Clustering
+                    </div>
+
+                    <h1 class="text-4xl font-bold tracking-tight mb-4">
+                        Gamer Persona Framework <span class="text-gray-400 dark:text-gray-500 font-normal">—</span> User Behavior Clustering
+                    </h1>
+
+                    <p class="text-base text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
+                        A Python-assisted research workflow that transformed gameplay evidence, transcript signals, and clip descriptions into eight gamer persona clusters for marketing campaign planning and user segmentation.
+                    </p>
+
+                    <div class="flex flex-wrap gap-3 mb-6">
+                        <a href="#pipeline" class="px-6 py-2.5 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-lg text-sm font-semibold transition-all hover:bg-black dark:hover:bg-white hover:-translate-y-0.5 inline-flex items-center gap-2">
+                            <i class="bi bi-diagram-3"></i> See Pipeline
+                        </a>
+                        <a href="#personas" class="px-6 py-2.5 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-lg text-sm font-semibold transition-all hover:border-gray-900 dark:hover:border-gray-600 inline-flex items-center gap-2">
+                            <i class="bi bi-grid-3x3-gap"></i> Persona Results
+                        </a>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Python</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Prompt Engineering</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Behavior Analysis</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Clustering</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">NLP</span>
+                        <span class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 px-3 py-1 rounded-md text-xs font-medium border border-gray-200 dark:border-gray-700">Campaign Research</span>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <div class="overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+                        <div class="aspect-[16/10] w-full bg-gray-100 dark:bg-gray-900 p-6">
+                            <div class="h-full rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-5 flex flex-col justify-between">
+                                <div>
+                                    <div class="text-xs uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 mb-3">Gen10 Premium Users</div>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-3">
+                                            <div class="text-2xl font-bold text-red-500">100</div>
+                                            <div class="text-xs text-gray-500 dark:text-gray-400">users</div>
+                                        </div>
+                                        <div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 p-3">
+                                            <div class="text-2xl font-bold text-red-500">7.1K</div>
+                                            <div class="text-xs text-gray-500 dark:text-gray-400">clips</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-4 gap-2 pt-5">
+                                    <span class="h-16 rounded-lg bg-red-200/70 dark:bg-red-500/25"></span>
+                                    <span class="h-16 rounded-lg bg-sky-200/70 dark:bg-sky-500/25"></span>
+                                    <span class="h-16 rounded-lg bg-green-200/70 dark:bg-green-500/25"></span>
+                                    <span class="h-16 rounded-lg bg-amber-200/70 dark:bg-amber-500/25"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-5">
+                            <dl class="grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Role</dt>
+                                    <dd class="font-semibold">AI & Data Research</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Company</dt>
+                                    <dd class="font-semibold">Eklipse.gg</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Input</dt>
+                                    <dd class="font-semibold">Transcripts + Clips</dd>
+                                </div>
+                                <div>
+                                    <dt class="text-gray-500 dark:text-gray-400 text-xs mb-1">Status</dt>
+                                    <dd class="inline-flex items-center gap-1.5 font-semibold">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-green-500"></span> Completed
+                                    </dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid gap-8 lg:grid-cols-12">
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-4">Background</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">
+                            Marketing teams often need a clear way to understand different gamer audiences, but raw stream data is messy. Behavior signals are scattered across clip titles, descriptions, voice transcripts, game context, and emotional reactions.
+                        </p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5">
+                            This project turned those scattered signals into a structured persona framework. The work started from requirement gathering with Python, then moved into text extraction, signal mapping, prompt-assisted clustering, and final persona validation.
+                        </p>
+                        <div class="grid gap-3 sm:grid-cols-2">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-sm">
+                                <div class="font-semibold mb-2">The Problem</div>
+                                <ul class="space-y-1.5 text-gray-500 dark:text-gray-400">
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>Streamer behavior signals were unstructured and hard to compare.</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>Campaign planning needed more useful gamer audience types.</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>Manual persona grouping could become subjective without evidence rules.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-sm">
+                                <div class="font-semibold mb-2">Goals</div>
+                                <ul class="space-y-1.5 text-gray-500 dark:text-gray-400">
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>Gather and structure persona requirements using Python.</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>Map transcript and clip signals into behavioral markers.</li>
+                                    <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-green-500 shrink-0"></span>Deliver campaign-ready gamer persona clusters.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="pipeline" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-5">Research Pipeline</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-6">
+                            The workflow moved from raw evidence collection to a usable persona taxonomy, with each step designed to reduce noise and preserve explainable cluster logic.
+                        </p>
+                        <div class="space-y-3">
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">1</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Requirement Gathering</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Used Python to gather and organize requirements around what persona outputs should support: user segmentation, campaign messaging, behavioral markers, and confidence notes.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">2</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Text & Clip Signal Preparation</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Structured clip metadata, transcript snippets, descriptions, emotional signals, game context, and topic indicators into a comparable evidence format.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">3</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Behavior Marker Mapping</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Mapped repeatable signals such as screaming dominance, analytical commentary, objective play, comedy framing, lore curiosity, rage patterns, tactical tension, and Just Chatting storytelling.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">4</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Prompt-Assisted Clustering</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Designed prompts to group users by recurring behavior patterns, separate primary and secondary personas, and keep cluster explanations tied to observable evidence.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4 items-start bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 shrink-0">5</span>
+                                <div>
+                                    <div class="text-sm font-semibold mb-1">Persona Validation</div>
+                                    <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Reviewed overlap and outliers, documented confidence levels, and finalized persona definitions with source notes that make the taxonomy easier to maintain.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="personas" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-2">Persona Results</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-5">
+                            The final framework contains eight distinct gamer persona clusters, each grounded in clip behavior, transcript style, topic composition, and emotional signals.
+                        </p>
+                        <div class="grid gap-3 sm:grid-cols-2">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-sm font-semibold mb-1">Reactive Screamer</div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Generates clips through vocal reactions to jump scares, chases, and ambushes.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-sm font-semibold mb-1">Meta Analyst</div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Explains build theory, game systems, and strategy decisions while playing.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-sm font-semibold mb-1">Grounded Survivor</div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Creates highlights through objective play, team awareness, and clutch moments.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-sm font-semibold mb-1">Chaos Comedian</div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Turns glitches, absurd gameplay, and unexpected moments into comedy content.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-sm font-semibold mb-1">Immersive Explorer</div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Engages with story reveals, world discovery, lore, and survival tension.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-sm font-semibold mb-1">Rage Competitor</div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Uses competitive frustration, opponent callouts, and escalation as content.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-sm font-semibold mb-1">Tactical Gunner</div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Produces clips from firefights, threat detection, and high-stakes survival.</p>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-sm font-semibold mb-1">Lifestyle Broadcaster</div>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">Centers content on storytelling, IRL moments, and community interaction.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-7">
+                        <h2 class="text-lg font-bold tracking-tight mb-5">Results</h2>
+                        <div class="grid gap-4 sm:grid-cols-3">
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Users Analyzed</div>
+                                <div class="text-2xl font-bold text-red-500 mb-1">100</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Premium streamer sample</div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Clips Analyzed</div>
+                                <div class="text-2xl font-bold text-red-500 mb-1">7,194</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Across 294 sessions</div>
+                            </div>
+                            <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-4">
+                                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2">Output</div>
+                                <div class="text-2xl font-bold text-red-500 mb-1">8</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">Campaign-ready personas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="lg:col-span-4 space-y-6">
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Project Info</h3>
+                        <dl class="space-y-3 text-sm">
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Domain</dt>
+                                <dd class="font-semibold text-right">Gaming Personas</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Data Source</dt>
+                                <dd class="font-semibold text-right">Transcripts + Clips</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Method</dt>
+                                <dd class="font-semibold text-right">Prompt Clustering</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2 border-b border-gray-100 dark:border-gray-700">
+                                <dt class="text-gray-500 dark:text-gray-400">Use Case</dt>
+                                <dd class="font-semibold text-right">Marketing Campaign</dd>
+                            </div>
+                            <div class="flex justify-between gap-4 py-2">
+                                <dt class="text-gray-500 dark:text-gray-400">Output</dt>
+                                <dd class="font-semibold text-right">Persona Framework</dd>
+                            </div>
+                        </dl>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Deliverables</h3>
+                        <ul class="space-y-2.5 text-sm text-gray-500 dark:text-gray-400">
+                            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>Requirement gathering workflow</li>
+                            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>Structured behavior signal mapping</li>
+                            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>Prompt design for persona clustering</li>
+                            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>Eight-cluster gamer persona taxonomy</li>
+                            <li class="flex items-start gap-2"><span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-500 shrink-0"></span>Campaign-ready persona framework</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6">
+                        <h3 class="text-sm font-bold tracking-tight mb-4">Quick Navigation</h3>
+                        <div class="grid gap-3">
+                            <a href="#pipeline" class="flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                                <span class="flex items-center gap-2"><i class="bi bi-diagram-3 text-xs"></i> Research Pipeline</span>
+                                <i class="bi bi-chevron-right text-xs text-gray-400"></i>
+                            </a>
+                            <a href="#personas" class="flex items-center justify-between px-4 py-3 bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-medium hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                                <span class="flex items-center gap-2"><i class="bi bi-grid-3x3-gap text-xs"></i> Persona Results</span>
+                                <i class="bi bi-chevron-right text-xs text-gray-400"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <a href="../index.html#projects" class="flex items-center justify-center gap-2 w-full px-4 py-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-300 hover:border-gray-900 dark:hover:border-gray-600 transition-all">
+                        <i class="bi bi-arrow-left text-xs"></i> Back to Projects
+                    </a>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-8 px-8 border-t border-gray-200 dark:border-gray-700 text-center text-gray-500 dark:text-gray-400 text-xs">
+        <div class="max-w-6xl mx-auto">
+            <p>&copy; 2026 Talidah Nur Keyesa. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const html = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') html.classList.add('dark');
+
+        function toggleTheme() {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuButton = document.getElementById('close-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        closeMenuButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        mobileNavLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
